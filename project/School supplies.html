@@ -1,0 +1,546 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cartify — School Supplies</title>
+  <meta name="description"
+    content="Level up your lifestyle with our curated selection of high-performance gadgets. From pro-grade headphones to the latest workstation laptops." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+
+  <!-- Animate CSS -->
+  <link rel="stylesheet" href="./CSS/animate.min.css" />
+  <!-- WOW CSS -->
+  <link rel="stylesheet" href="./CSS/wow.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="./CSS/all.min.css" />
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+  <!-- MDB Bootstrap -->
+  <link rel="stylesheet" href="./CSS/mdb.min.css" />
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="./CSS/Style.css" />
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+
+    <nav class="navbar navbar-expand-lg nav-home sticky-top">
+      <div class="container">
+        <a class="navbar-brand me-2 brand-name" href="./index.html">
+          <img src="./img/Icon.png" height="16" alt="Cartify Logo" loading="lazy" style="margin-top: -1px" />
+          Cartify
+        </a>
+
+        <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarButtonsExample"
+          aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4 px-4 nav-linkss">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./Categories.html">Categories</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./returns.html">Returns</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#support">Support</a>
+            </li>
+          </ul>
+
+          <form class="d-flex nav-search">
+            <div class="input-group mx-3">
+              <span class="input-group-text border-end-0 icon">
+                <i class="fa-solid fa-magnifying-glass fa-xs" style="color: rgb(148, 163, 184)"></i>
+              </span>
+              <input class="form-control border-start-0 word" type="search" placeholder="Search Products..."
+                style="text-overflow: ellipsis" />
+            </div>
+          </form>
+
+          <div class="nav-icons-group">
+            <a class="text-reset" href="./login.html" title="Account">
+              <img src="./img/MAN Icon.png" alt="Account" />
+            </a>
+            <a class="text-reset" href="#" title="Cart">
+              <img src="./img/Button.png" alt="Cart" />
+            </a>
+            <a class="text-reset" href="#" title="Wishlist">
+              <img src="./img/Vector.png" alt="Wishlist" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========== END NAVBAR ========== -->
+
+
+  <!-- ========== MAIN CONTENT ========== -->
+
+  <main class="container py-4">
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumb-custom wow fadeIn" data-wow-delay="0.2s">
+      <a href="./index.html"><i class="fa-solid fa-house me-1"></i> Home</a>
+      <i class="fa-solid fa-chevron-right mx-2" style="font-size:0.6rem"></i>
+      <a href="./Categories.html">Categories</a>
+      <i class="fa-solid fa-chevron-right mx-2" style="font-size:0.6rem"></i>
+      <span class="active">School Supplies</span>
+    </div>
+
+    <!-- Top Banner -->
+
+    <section class="category-banner wow fadeInUp" data-wow-delay="0.3s">
+      <div class="banner-content w-100">
+        <span class="badge-premium">PREMIUM COLLECTION</span>
+        <h1 class="category-title">School Supplies</h1>
+        <p class="category-desc">Boost your productivity with our selection of stylish stationary, practical tools, and creative supplies made to inspire your study or organization.</p>
+      </div>
+    </section>
+
+    <!-- Filters & Sorting -->
+
+    <section class="filters-bar wow fadeIn" data-wow-delay="0.4s">
+      <div class="d-flex gap-2 flex-wrap filters-category">
+        <button class="filter-btn">
+          <i class="fa-solid fa-layer-group"></i> Category
+          <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>
+        </button>
+        <button class="filter-btn">
+          Price Range <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>
+        </button>
+        <button class="filter-btn">
+          Rating <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>
+        </button>
+      </div>
+
+      <div class="sort-by mt-3 mt-md-0">
+        Sort by:
+        <div class="dropdown ms-2">
+          <button class="filter-btn bg-transparent px-2" type="button" data-bs-toggle="dropdown">
+            Most Popular <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Most Popular</a></li>
+            <li><a class="dropdown-item" href="#">Newest</a></li>
+            <li><a class="dropdown-item" href="#">Price: Low to High</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+
+    <div id="product-grid" class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-4 mt-2">
+
+      <!-- Product 1 (Page 1) -->
+
+      <div class="col product-item wow fadeInUp" data-wow-delay="0.1s" data-page="1">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+             <span class="card-badge badge-new">NEW ARRIVAL</span>
+            <button class="btn-wishlist"><i class="fa-regular fa-heart"></i></button>
+            <img src="./img/compostion book.png" alt="Compostion Notebook" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="rating-count">(42)</span>
+            </div>
+            <h3 class="product-title">Compostion Notebook</h3>
+            <div class="product-price-row">
+              <div class="price">$8.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 (Page 1) -->
+
+      <div class="col product-item wow fadeInUp" data-wow-delay="0.2s" data-page="1">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+             <span class="card-badge badge-new">BEST SELLER</span>
+            <button class="btn-wishlist"><i class="fa-regular fa-heart"></i></button>
+            <img src="./img/hipolymer eraser.png" alt="Hipolymar eraser" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(156)</span>
+            </div>
+            <h3 class="product-title">Hipolymar pencil</h3>
+            <div class="product-price-row">
+              <div class="price">$5.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 (Page 1) -->
+
+      <div class="col product-item wow fadeInUp" data-wow-delay="0.3s" data-page="1">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <button class="btn-wishlist"><i class="fa-regular fa-heart"></i></button>
+            <img src="./img/coloring set.png" alt="Coloring Set" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="rating-count">(89)</span>
+            </div>
+            <h3 class="product-title">coloring Set</h3>
+            <div class="product-price-row">
+              <div class="price">$5.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 4 (Page 1) -->
+
+      <div class="col product-item wow fadeInUp" data-wow-delay="0.4s" data-page="1">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <span class="card-badge badge-new" style="background-color: #ef4444;">HOT DEAL</span>
+            <button class="btn-wishlist"><i class="fa-regular fa-heart"></i></button>
+            <img src="./img/minimalist pencilcase .png" alt="Minimalist pencilcase" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(310)</span>
+            </div>
+            <h3 class="product-title">Minimalist pencilcase</h3>
+            <div class="product-price-row">
+              <div class="price-old">$65.00</div>
+              <div class="price price-hot">$30.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 2 (4 items total) -->
+
+      <div class="col product-item wow fadeInUp" data-page="2" style="display: none;">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <img src="./img/QSHOP Cute Cartoon Pencil Case for Kids.jpg" alt="QSHOP Cute Cartoon Pencil Case for Kids" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span class="rating-count">(3.3k)</span>
+            </div>
+            <h3 class="product-title">QSHOP Cute Cartoon Pencil Case for Kids
+</h3>
+            <div class="product-price-row">
+              <div class="price">$19.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col product-item wow fadeInUp" data-page="2" style="display: none;">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <img src="./img/Faber-Castell Faber Castell B384 Plastic Eraser Black.jpg" alt="Faber-Castell Faber Castell B384 Plastic Eraser Black" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span class="rating-count">(850)</span>
+            </div>
+            <h3 class="product-title">Faber-Castell Faber Castell B384 Plastic Eraser Blue</h3>
+            <div class="product-price-row">
+              <div class="price">$3.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col product-item wow fadeInUp" data-page="2" style="display: none;">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <img src="./img/Roto liquid ball ballpoint pen.jpg" alt="Roto liquid ball ballpoint pen" />    
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+              <span class="rating-count">(3.1k)</span>
+            </div>
+            <h3 class="product-title">Roto liquid ball ballpoint pen</h3>
+            <div class="product-price-row">
+              <div class="price">$1.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col product-item wow fadeInUp" data-page="2" style="display: none;">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <img src="./img/Spiral 0.5 Squares A4 Notebook.jpg" alt="Spiral 0.5 Squares A4 Notebook" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span class="rating-count">(520)</span>
+            </div>
+            <h3 class="product-title">Spiral 0.5 Squares A4 Notebook</h3>
+            <div class="product-price-row">
+              <div class="price">$2.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Page 3 (4 items total) -->
+      <div class="col product-item wow fadeInUp" data-page="3" style="display: none;">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <img src="./img/Prima flash ballpoint pen set of 6 assorted colors.jpg" alt="Prima flash ballpoint pen set of 6 assorted colors" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span class="rating-count">(920)</span>
+            </div>
+            <h3 class="product-title">Prima flash ballpoint pen set of 6 assorted colors</h3>
+            <div class="product-price-row">
+              <div class="price">$19.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col product-item wow fadeInUp" data-page="3" style="display: none;">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <img src="./img/Faber-Castell Single Hole Apple Sharpener.jpg" alt="Faber-Castell Single Hole Apple Sharpener" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span class="rating-count">(1.1k)</span>
+            </div>
+            <h3 class="product-title">Faber-Castell Single Hole Apple Sharpener</h3>
+            <div class="product-price-row">
+              <div class="price">$9.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col product-item wow fadeInUp" data-page="3" style="display: none;">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <img src="./img/HuAFaN Professional Art Set, Watercolor Pencils & Crayons, School Art Supplies, Students, Beginners & Artists, 150 Pieces.jpg" alt="HuAFaN Professional Art Set, Watercolor Pencils & Crayons, School Art Supplies, Students, Beginners & Artists, 150 Pieces" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+              <span class="rating-count">(740)</span>
+            </div>
+            <h3 class="product-title">HuAFaN Professional Art Set, Watercolor Pencils & Crayons, School Art Supplies, Students, Beginners & Artists, 150 Pieces</h3>
+            <div class="product-price-row">
+              <div class="price">$19.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col product-item wow fadeInUp" data-page="3" style="display: none;">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <img src="./img/Desk Organizer Mesh Desktop Office Supplies Multi-functional Caddy Pen Holder Stationery.jpg" alt="Desk Organizer Mesh Desktop Office Supplies Multi-functional Caddy Pen Holder Stationery" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+              <span class="rating-count">(230)</span>
+            </div>
+            <h3 class="product-title">Desk Organizer Mesh Desktop Office Supplies Multi-functional Caddy Pen Holder Stationery</h3>
+            <div class="product-price-row">
+              <div class="price">$19.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   
+
+    <!-- Pagination -->
+
+    <ul class="pagination-custom wow fadeIn" data-wow-delay="1.0s">
+      <li><a href="#" class="disabled"><i class="fa-solid fa-chevron-left"></i></a></li>
+      <li><a href="#" class="active">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#" class="dots">...</a></li>
+      <li><a href="#">12</a></li>
+      <li><a href="#"><i class="fa-solid fa-chevron-right"></i></a></li>
+    </ul>
+
+    <!-- Recommended Section -->
+     
+    <section class="recommended-section wow fadeInUp" data-wow-delay="0.3s">
+      <div class="section-header">
+        <h2 class="section-title">Recommended for You</h2>
+      </div>
+      <div class="row row-cols-2 row-cols-md-4 g-4">
+        <div class="col">
+          <div class="rec-card">
+            <div class="rec-img-wrapper">
+              <img src="./img/Dream notebook set.png" alt="Dream Notebook set" />
+            </div>
+            <h4 class="rec-title">Dream Notebook set</h4>
+            <div class="rec-price">$119.00</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="rec-card">
+            <div class="rec-img-wrapper" style="background-color: #f7e6dc">
+              <img src="./img/pink Backbag.png" alt="Pink backbag" />
+            </div>
+            <h4 class="rec-title">Pink backbag</h4>
+            <div class="rec-price">$15.00</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="rec-card">
+            <div class="rec-img-wrapper" style="background-color: #f8e5cc">
+              <img src="./img/Cartoon set pens.png" alt="Cartoon set Pens" />
+            </div>
+            <h4 class="rec-title">Cartoon set Pens</h4>
+            <div class="rec-price">$29.00</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="rec-card">
+            <div class="rec-img-wrapper">
+              <img src="./img/colorful sticky notes.png" alt="Colorful Sticky Notes" />
+            </div>
+            <h4 class="rec-title">Colorful Sticky Notes</h4>
+            <div class="rec-price">$35.00</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== END MAIN ========== -->
+
+
+  <!-- ========== FOOTER ========== -->
+
+  <footer class="footer wow fadeIn" data-wow-offset="100">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-logo">
+            <img src="./img/Icon.png" height="16" alt="Cartify Logo" />
+            <span class="brand-text">Cartify</span>
+          </div>
+          <p class="footer-desc">Your ultimate destination for the latest in tech and style. Experience the future of
+            shopping.</p>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./Categories.html">Categories</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-title">Support</h4>
+          <ul class="footer-links">
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & Refunds</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6">
+          <h4 class="footer-title">Newsletter</h4>
+          <p class="newsletter-desc">Get the latest tech deals in your inbox.</p>
+          <form class="newsletter-form">
+            <div class="newsletter-input-wrapper mb-3">
+              <input type="email" placeholder="email@example.com" class="form-control" />
+            </div>
+            <button type="submit" class="w-100">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom mt-5">
+        <div class="copyright">
+          &copy; 2026 Cartify E-commerce. All rights reserved.
+        </div>
+        <div class="bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- ========== END FOOTER ========== -->
+
+
+  <!-- Scripts -->
+  <script src="./Js/all.min.js"></script>
+  <script src="./Js/wow.min.js"></script>
+  <script>new WOW().init();</script>
+  <script src="./Js/jquery.slim.min.js"></script>
+  <script src="./Js/popper.min.js"></script>
+  <script src="./Js/bootstrap.min.js"></script>
+  <script src="./Js/mdb.umd.min.js"></script>
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="./Js/main.js"></script>
+</body>
+
+</html> 

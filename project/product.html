@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cartify — Browse Categories</title>
+    <meta
+      name="description"
+      content="Explore our curated categories: Electronics, Fashion, Home & Living, Beauty, Accessories, and School Supplies."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./CSS/animate.min.css" />
+    <!-- WOW CSS -->
+    <link rel="stylesheet" href="./CSS/wow.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <!-- MDB Bootstrap -->
+    <link rel="stylesheet" href="./CSS/mdb.min.css" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./CSS/Style.css" />
+  </head>
+
+  <body>
+    <!-- ========== NAVBAR ========== -->
+
+    <nav class="navbar navbar-expand-lg nav-home sticky-top">
+      <div class="container">
+        <a class="navbar-brand me-2 brand-name" href="./index.html">
+          <img
+            src="./img/Icon.png"
+            height="16"
+            alt="Cartify Logo"
+            loading="lazy"
+            style="margin-top: -1px"
+          />
+          Cartify
+        </a>
+
+        <button
+          data-mdb-collapse-init
+          class="navbar-toggler"
+          type="button"
+          data-mdb-target="#navbarButtonsExample"
+          aria-controls="navbarButtonsExample"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4 px-4 nav-linkss">
+            <li class="nav-item">
+              <a class="nav-link" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active-link" href="./Categories.html"
+                >Categories</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./returns.html">Returns</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#support">Support</a>
+            </li>
+          </ul>
+
+          <form class="d-flex nav-search">
+            <div class="input-group mx-3">
+              <span class="input-group-text border-end-0 icon">
+                <i
+                  class="fa-solid fa-magnifying-glass fa-xs"
+                  style="color: rgb(148, 163, 184)"
+                ></i>
+              </span>
+              <input
+                class="form-control border-start-0 word"
+                type="search"
+                placeholder="Search Products..."
+                style="text-overflow: ellipsis"
+              />
+            </div>
+          </form>
+
+          <div class="nav-icons-group">
+            <a class="text-reset" href="./login.html" title="Account">
+              <img src="./img/MAN Icon.png" alt="Account" />
+            </a>
+            <a class="text-reset" href="#" title="Cart">
+              <img src="./img/Button.png" alt="Cart" />
+            </a>
+            <a class="text-reset" href="#" title="Wishlist">
+              <img src="./img/Vector.png" alt="Wishlist" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- ========== END NAVBAR ========== -->
+    <main class="container my-5">
+      <!-- Breadcrumbs -->
+      <div class="breadcrumb-custom wow fadeIn" data-wow-delay="0.2s">
+        <a href="./index.html"><i class="fa-solid fa-house me-1"></i> Home</a>
+        <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.6rem"></i>
+        <a href="./Categories.html">Categories</a>
+        <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.6rem"></i>
+        <a href="./electronics.html">Electronics</a>
+        <i class="fa-solid fa-chevron-right mx-2" style="font-size: 0.6rem"></i>
+        <span class="active">product</span>
+      </div>
+
+      <div class="row g-5">
+        <!-- Left: Images -->
+        <div class="col-lg-6">
+          <div class="main-product-image mb-4 shadow-lg">
+            <img
+              width="100%"
+              id="product-img"
+              class="img-fluid"
+              alt="Headphones"
+            />
+          </div>
+          <div class="row g-3">
+            <div class="col-3">
+              <div class="">
+                <img
+                  src="./img/product photoo.png"
+                  width="100%"
+                  class="small-img"
+                />
+              </div>
+            </div>
+            <div class="col-3">
+              <img src="./img/headphone 22.png" class="small-img" />
+            </div>
+            <div class="col-3">
+              <img
+                src="./img/headphonee 21.png"
+                width="100%"
+                class="small-img"
+              />
+            </div>
+            <div class="col-3">
+              <img
+                src="./img/headphone 33.png"
+                width="100%"
+                class="small-img"
+              />
+            </div>
+          </div>
+        </div>
+        <!-- Right: Details -->
+        <div class="col-lg-6 ps-lg-5 d-flex flex-column justify-content-center">
+          <h6
+            class="text-primary fw-bold text-uppercase mb-2 small permium-label"
+            style="letter-spacing: 2px"
+          >
+            Premium Series
+          </h6>
+          <h1 class="fw-bold mb-3 display-5">Pro Sound Wireless Headphones</h1>
+
+          <div class="d-flex align-items-center mb-4">
+            <div class="text-warning me-2 small">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="fas fa-star"></i><i class="fas fa-star"></i
+              ><i class="far fa-star text-muted"></i>
+            </div>
+            <span class="text-muted small">(128 reviews)</span>
+            <a
+              href="#"
+              class="ms-3 fw-bold text-primary small text-decoration-none"
+              >Soundcore
+              <i class="fas fa-chevron-right ms-1" style="font-size: 0.6rem"></i
+            ></a>
+          </div>
+
+          <div class="mb-4 d-flex align-items-end">
+            <span class="price-tag me-3">$299.00</span>
+            <span class="old-price mb-2">$349.00</span>
+          </div>
+
+          <p class="text-muted mb-5 lead" style="font-size: 1rem">
+            Experience audio like never before. The Pro Sound Wireless features
+            active noise cancellation, 40-hour battery life, and spatial audio
+            technology for an immersive listening experience.
+          </p>
+
+          <div class="mb-5">
+            <p class="text-uppercase fw-bold text-muted small mb-3">
+              Color Variant
+            </p>
+            <div class="d-flex">
+              <span
+                class="color-option active"
+                style="background-color: #1a237e"
+              ></span>
+              <span
+                class="color-option"
+                style="background-color: #d1d9e6"
+              ></span>
+              <span
+                class="color-option"
+                style="background-color: #c9b8e8"
+              ></span>
+            </div>
+          </div>
+
+          <div class=" row g-3 mb-5">
+             <p class="text-uppercase fw-bold text-muted small mb-3">
+             quantity
+            </p>
+            <div class="col-md-4">
+               
+              <div
+                class="d-flex align-items-center justify-content-between bg-light rounded-pill px-3 py-2"
+              >
+
+                <button id="decrease" class="btn btn-link text-muted p-0">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <span id="quantity" class="fw-bold">1</span>
+                <button id="increase" class="btn btn-link text-muted p-0">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
+            <div class="col-md-8">
+              
+              <button class="btn btn-add-cart w-100 shadow">
+                <i class="fas fa-shopping-cart me-2"></i> Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="row border-top pt-4">
+            <div
+              class="col-6 d-flex align-items-center gap-2 fw-bold small "
+            >
+              <img src="./img/delivery Icon.png" /> Free Delivery
+            </div>
+            <div
+              class="col-6 d-flex align-items-center gap-2 fw-bold small"
+            >
+              <img src="./img/warrantyIcon.png"> 2 Year Warranty
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- you may also like -->
+      <div class="container py-4 mt-4">
+        <h2 class="fw-bold mb-5">You may also like</h2>
+      <div id="product-grid" class="row row-cols-1 row-cols-sm-2 row-cols-xl-4 g-4 mt-2">
+
+      <!-- card one -->
+
+      <div class="col product-item wow fadeInUp" data-wow-delay="0.1s" data-page="1">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+        
+            <button class="btn-wishlist cardswhishlist"><i class="fa-regular fa-heart"></i></button>
+            <img src="./img/modern watch.png" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="rating-count">(42)</span>
+            </div>
+            <h3 class="product-title">Modern Watch Pro</h3>
+            <p>wearables</p>
+            <div class="product-price-row">
+              <div class="price">$199.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card two -->
+
+      <div class="col product-item wow fadeInUp" data-wow-delay="0.2s" data-page="1">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+           
+            <button class="btn-wishlist cardswhishlist"><i class="fa-regular fa-heart"></i></button>
+            <img src="./img/SONIC BOOM.png" alt="sonic boom" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(156)</span>
+            </div>
+            <h3 class="product-title">Sonic Boom Box</h3>
+            <p>Audio</p>
+            <div class="product-price-row">
+              <div class="price">$89.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- card three -->
+
+      <div class="col product-item wow fadeInUp" data-wow-delay="0.3s" data-page="1">
+        <div class="product-card">
+          <div class="product-img-wrapper">
+            <button class="btn-wishlist cardswhishlist"><i class="fa-regular fa-heart"></i></button>
+            <img src="./img/TAB S ULTRA.png" alt="tab s ultra" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+              </div>
+              <span class="rating-count">(89)</span>
+            </div>
+            <h3 class="product-title">Tab S Ultra</h3>
+            <p>Tablets</p>
+            <div class="product-price-row">
+              <div class="price">$749.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- card four -->
+
+      <div class="col product-item wow fadeInUp" data-wow-delay="0.4s" data-page="1">
+        <div class="product-card">
+          <div class="product-img-wrapper"><button
+           class="btn-wishlist cardswhishlist"><i class="fa-regular fa-heart"></i></button>
+            <img src="./img/MOUSE.png" alt="mouse" />
+          </div>
+          <div class="product-details">
+            <div class="d-flex align-items-center mb-2">
+              <div class="rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                  class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <span class="rating-count">(30)</span>
+            </div>
+            <h3 class="product-title">G-Force Mouse</h3>
+            <p>Accessories</p>
+            <div class="product-price-row">
+              <div class="price">$59.00</div>
+              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+          
+    </main>
+    <!-- ========== FOOTER ========== -->
+
+    <footer class="footer wow fadeIn" data-wow-offset="100">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-logo">
+              <img src="./img/Icon.png" height="16" alt="Cartify Logo" />
+              <span class="brand-text">Cartify</span>
+            </div>
+            <p class="footer-desc">
+              Your ultimate destination for the latest in tech and style.
+              Experience the future of shopping.
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./Categories.html">Categories</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Support</h4>
+            <ul class="footer-links">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Returns & Refunds</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Newsletter</h4>
+            <p class="newsletter-desc">
+              Get the latest tech deals in your inbox.
+            </p>
+            <form class="newsletter-form">
+              <div class="newsletter-input-wrapper mb-3">
+                <input
+                  type="email"
+                  placeholder="email@example.com"
+                  class="form-control"
+                />
+              </div>
+              <button type="submit" class="w-100">Join</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom mt-5">
+          <div class="copyright">
+            &copy; 2026 Cartify E-commerce. All rights reserved.
+          </div>
+          <div class="bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========== END FOOTER ========== -->
+
+    <!-- Scripts -->
+    <script src="./Js/all.min.js"></script>
+    <script src="./Js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+    <script src="./Js/jquery.slim.min.js"></script>
+    <script src="./Js/popper.min.js"></script>
+    <script src="./Js/bootstrap.min.js"></script>
+    <script src="./Js/mdb.umd.min.js"></script>
+    <script src="./Js/main.js"></script>
+  </body>
+</html>
