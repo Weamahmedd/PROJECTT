@@ -33,7 +33,7 @@
 
     <!-- ========== NAVBAR ========== -->
 
-    <nav class="navbar navbar-expand-lg nav-home sticky-top">
+      <nav class="navbar navbar-expand-lg nav-home sticky-top">
       <div class="container">
         <a class="navbar-brand me-2 brand-name" href="./index.html">
           <img src="./img/Icon.png" height="16" alt="Cartify Logo" loading="lazy" style="margin-top: -1px" />
@@ -75,8 +75,9 @@
             <a class="text-reset" href="./login.html" title="Account">
               <img src="./img/MAN Icon.png" alt="Account" />
             </a>
-            <a class="text-reset" href="#" title="Cart">
-              <img src="./img/Button.png" alt="Cart" />
+            <a class="text-reset cart-icon-wrapper" href="#" title="Cart">
+              <i class="fa-solid fa-cart-shopping" style="color: #1d2538;" alt="cart"></i>
+              <span class="cart-badge">0</span>
             </a>
             <a class="text-reset" href="#" title="Wishlist">
               <img src="./img/Vector.png" alt="Wishlist" />
@@ -131,7 +132,7 @@
       <div class="sort-by mt-3 mt-md-0">
         Sort by:
         <div class="dropdown ms-2">
-          <button class="filter-btn bg-transparent px-2" type="button" data-bs-toggle="dropdown">
+          <button class="filter-btn bg-transparent px-2" type="button" data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false">
             Most Popular <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>
           </button>
           <ul class="dropdown-menu">

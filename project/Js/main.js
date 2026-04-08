@@ -1,9 +1,47 @@
-// ============================================
-// CARTIFY E-COMMERCE — UNIFIED MAIN SCRIPT
-// ============================================
-// This script is loaded on ALL pages.
-// Every DOM query is guarded so it only runs
-// when the relevant elements exist on the page.
+// ========== GLOBAL CART LOGIC ==========
+let cartCount = parseInt(sessionStorage.getItem('cartCount')) || 0;
+
+function updateCartBadge() {
+    const badges = document.querySelectorAll('.cart-badge');
+    badges.forEach(badge => {
+        badge.innerText = cartCount;
+        badge.style.display = cartCount > 0 ? 'flex' : 'none';
+        badge.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+    });
+}
+
+// Universal listener for 'Add to Cart' buttons across all pages
+document.addEventListener('click', (e) => {
+    // Check for both .button-cartt (Home) and .btn-add-cart (Categories/Product)
+    const btn = e.target.closest('.button-cartt, .btn-add-cart');
+    if (btn) {
+        // Handle quantity if on a product details page
+        let quantityToAdd = 1;
+        const quantityDisplay = document.getElementById("quantity");
+        if (quantityDisplay && btn.classList.contains("w-100")) {
+            quantityToAdd = parseInt(quantityDisplay.innerText) || 1;
+        }
+
+        cartCount += quantityToAdd;
+        sessionStorage.setItem('cartCount', cartCount);
+        updateCartBadge();
+        
+        // Brief scale-up animation feedback
+        const badges = document.querySelectorAll('.cart-badge');
+        badges.forEach(badge => {
+            badge.style.transform = 'scale(1.5)';
+            setTimeout(() => badge.style.transform = 'scale(1)', 300);
+        });
+    }
+});
+
+// Update badge immediately on script load (or wait for DOM)
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', updateCartBadge);
+} else {
+    updateCartBadge();
+}
+
 // ============================================
 
 // ========== SWIPER INITIALIZATION ==========
@@ -34,66 +72,144 @@ if (productSwiperEl) {
   });
 }
 
-// ========== ELECTRONICS PAGINATION (Complete) ==========
-const customPaginationLinks = document.querySelectorAll(".pagination-custom a");
-const electronicItems = document.querySelectorAll(".product-item");
+// ========== CATEGORY PAGES — SEARCH, SORT, & PAGINATION ==========
+const customPaginationContainer = document.querySelector(".pagination-custom");
+const allCategoryProducts = document.querySelectorAll(".product-item");
+const productGrid = document.querySelector("#product-grid");
+const sortDropdownItems = document.querySelectorAll(".sort-by .dropdown-item");
+const sortBtn = document.querySelector(".sort-by .filter-btn");
+// searchInput is declared below in the Navbar section, but we'll move it or reuse it.
+// To avoid redeclaration, let's use a shared variable or check if it's already there.
+let categorySearchInput = document.querySelector(".nav-search input");
+
 let currentPage = 1;
-const totalPages = 3; // Based on your HTML pages (1, 2, 3)
+const itemsPerPage = 4;
+let filteredItems = Array.from(allCategoryProducts);
+let currentSortMode = "Most Popular";
 
-function updateProducts(page) {
-  currentPage = page;
+function updateCategoryPage() {
+    if (!productGrid) return;
 
-  // Show/Hide products
-  electronicItems.forEach((item) => {
-    item.style.display =
-      item.getAttribute("data-page") == page ? "block" : "none";
-  });
+    // 1. Sort the currently filtered items
+    sortItems(filteredItems, currentSortMode);
 
-  // Update active state in pagination numbers
-  customPaginationLinks.forEach((link) => {
-    link.classList.remove("active");
-    if (parseInt(link.innerText) === page) {
-      link.classList.add("active");
-    }
+    // 2. Calculate pagination
+    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+    if (currentPage > totalPages) currentPage = totalPages || 1;
 
-    // Disable/Enable arrows
-    if (link.querySelector(".fa-chevron-left")) {
-      link.classList.toggle("disabled", page === 1);
-    }
-    if (link.querySelector(".fa-chevron-right")) {
-      link.classList.toggle("disabled", page === totalPages);
-    }
-  });
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-  // Smooth scroll to top of grid
-  document
-    .querySelector("#product-grid")
-    .scrollIntoView({ behavior: "smooth", block: "start" });
+    // 3. Hide all products first
+    allCategoryProducts.forEach(item => item.style.display = "none");
+
+    // 4. Show only items for current page and move them to the grid to maintain order
+    filteredItems.forEach((item, index) => {
+        if (index >= startIndex && index < endIndex) {
+            item.style.display = "block";
+            productGrid.appendChild(item); // Re-order in DOM
+        }
+    });
+
+    updatePaginationUI(totalPages);
 }
 
-if (customPaginationLinks.length > 0 && electronicItems.length > 0) {
-  customPaginationLinks.forEach((link) => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
+function sortItems(arr, mode) {
+    if (mode.includes("Price: Low to High")) {
+        arr.sort((a, b) => getPrice(a) - getPrice(b));
+    } else if (mode.includes("Newest")) {
+        arr.sort((a, b) => {
+            const bNew = b.querySelector('.badge-new') ? 1 : 0;
+            const aNew = a.querySelector('.badge-new') ? 1 : 0;
+            return bNew - aNew;
+        });
+    } else if (mode.includes("Most Popular")) {
+        arr.sort((a, b) => getPopularity(b) - getPopularity(a));
+    }
+}
 
-      // Case 1: Number clicked
-      const pageNum = parseInt(this.innerText);
-      if (!isNaN(pageNum)) {
-        updateProducts(pageNum);
-        return;
-      }
+function getPrice(el) {
+    const p = el.querySelector('.price')?.innerText || el.querySelector('.price-hot')?.innerText || "0";
+    return parseFloat(p.replace('$', '').replace(',', '')) || 0;
+}
 
-      // Case 2: Left Arrow (Previous)
-      if (this.querySelector(".fa-chevron-left") && currentPage > 1) {
-        updateProducts(currentPage - 1);
-      }
+function getPopularity(el) {
+    const c = el.querySelector('.rating-count')?.innerText || "(0)";
+    let val = c.replace(/[(),]/g, '').toLowerCase();
+    if (val.includes('k')) return parseFloat(val) * 1000;
+    return parseFloat(val) || 0;
+}
 
-      // Case 3: Right Arrow (Next)
-      if (this.querySelector(".fa-chevron-right") && currentPage < totalPages) {
-        updateProducts(currentPage + 1);
-      }
+function updatePaginationUI(totalPages) {
+    if (!customPaginationContainer) return;
+    
+    // We'll rebuild the pagination links based on totalPages
+    // but keep it simple: [Prev] [1] [2] [3] ... [Next]
+    
+    let html = `<li><a href="#" class="${currentPage === 1 ? 'disabled' : ''}" id="prev-page"><i class="fa-solid fa-chevron-left"></i></a></li>`;
+    
+    for (let i = 1; i <= totalPages; i++) {
+        html += `<li><a href="#" class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</a></li>`;
+    }
+    
+    html += `<li><a href="#" class="${currentPage === totalPages || totalPages === 0 ? 'disabled' : ''}" id="next-page"><i class="fa-solid fa-chevron-right"></i></a></li>`;
+    
+    customPaginationContainer.innerHTML = html;
+
+    // Re-attach listeners because we replaced the innerHTML
+    customPaginationContainer.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+            if (this.classList.contains('disabled')) return;
+
+            const pageNum = parseInt(this.getAttribute('data-page'));
+            if (!isNaN(pageNum)) {
+                currentPage = pageNum;
+            } else if (this.id === "prev-page" && currentPage > 1) {
+                currentPage--;
+            } else if (this.id === "next-page" && currentPage < totalPages) {
+                currentPage++;
+            }
+            
+            updateCategoryPage();
+            if (productGrid) productGrid.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
     });
-  });
+}
+
+// Event Listeners
+if (allCategoryProducts.length > 0) {
+    // Sort Listeners
+    sortDropdownItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            currentSortMode = this.innerText.trim();
+            if (sortBtn) {
+                sortBtn.innerHTML = `${currentSortMode} <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>`;
+            }
+            currentPage = 1; // Reset to first page on sort
+            updateCategoryPage();
+        });
+    });
+
+    // Search Listener
+    if (categorySearchInput) {
+        categorySearchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            filteredItems = Array.from(allCategoryProducts).filter(item => {
+                const title = item.querySelector('.product-title').innerText.toLowerCase();
+                return title.includes(query);
+            });
+            currentPage = 1;
+            updateCategoryPage();
+        });
+    }
+
+    // Pagination listeners are now handled dynamically within updatePaginationUI()
+    // and re-attached whenever the pagination is rebuilt.
+
+    // Initial run
+    updateCategoryPage();
 }
 
 // ========== NAVBAR (all pages) ==========
@@ -274,7 +390,6 @@ if (productCards.length > 0) {
   const cartButtons = document.querySelectorAll(".button-cartt");
   cartButtons.forEach((btn, index) => {
     btn.addEventListener("click", (e) => {
-      e.stopPropagation();
       const product = products[index];
       if (product) {
         cart.push(product);
@@ -730,36 +845,62 @@ addCartButtons.forEach((btn) => {
     }, 1500);
   });
 });
-// product page
-var MainProductImg = document.getElementById("product-img");
-var smallImg = document.getElementsByClassName("small-img");
-MainProductImg.src = smallImg[0].src;
-for (let i = 0; i < smallImg.length; i++) {
-  smallImg[i].onclick = function () {
-    MainProductImg.src = smallImg[i].src;
+// ========== PRODUCT DETAIL PAGE LOGIC ==========
+const MainProductImg = document.getElementById("product-img");
+const smallImg = document.getElementsByClassName("small-img");
 
-    for (let j = 0; j < smallImg.length; j++) {
-      smallImg[j].classList.remove("active");
+if (MainProductImg && smallImg.length > 0) {
+    MainProductImg.src = smallImg[0].src;
+    for (let i = 0; i < smallImg.length; i++) {
+        smallImg[i].onclick = function () {
+            MainProductImg.src = smallImg[i].src;
+            for (let j = 0; j < smallImg.length; j++) {
+                smallImg[j].classList.remove("active");
+            }
+            smallImg[i].classList.add("active");
+        };
     }
-
-    smallImg[i].classList.add("active");
-  };
 }
 
 const decreaseBtn = document.getElementById("decrease");
 const increaseBtn = document.getElementById("increase");
 const quantitySpan = document.getElementById("quantity");
 
-let quantity = parseInt(quantitySpan.textContent);
+if (decreaseBtn && increaseBtn && quantitySpan) {
+    let currentQty = parseInt(quantitySpan.textContent) || 1;
+    decreaseBtn.addEventListener("click", () => {
+        if (currentQty > 1) {
+            currentQty--;
+            quantitySpan.textContent = currentQty;
+        }
+    });
+    increaseBtn.addEventListener("click", () => {
+        currentQty++;
+        quantitySpan.textContent = currentQty;
+    });
+}
 
-decreaseBtn.addEventListener("click", () => {
-  if (quantity > 1) {
-    quantity--;
-    quantitySpan.textContent = quantity;
-  }
-});
 
-increaseBtn.addEventListener("click", () => {
-  quantity++;
-  quantitySpan.textContent = quantity;
-});
+
+// ========== profile PAGE ==========
+
+function convertDollar(){
+    var dollar = document.getElementById("dollar").value;
+    var result = document.getElementById("result");
+    if(dollar==""){
+        result.innerHTML="Enter Data";
+        return false;
+    }else if(isNaN(dollar)){
+        result.innerHTML="Enter Number Not Text";
+        return false;
+    }else if (dollar<0){
+        result.innerHTML="Enter postive Number";
+        return false;
+    }else if(dollar==0){
+        result.innerHTML="Enter Number Rather than 0"
+        return false;
+    }else{
+result.innerHTML=dollar*55+"Egyptian pound";
+return false;
+    }
+}

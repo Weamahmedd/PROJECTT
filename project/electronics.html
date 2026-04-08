@@ -33,7 +33,7 @@
 
     <!-- ========== NAVBAR ========== -->
 
-    <nav class="navbar navbar-expand-lg nav-home sticky-top">
+     <nav class="navbar navbar-expand-lg nav-home sticky-top">
       <div class="container">
         <a class="navbar-brand me-2 brand-name" href="./index.html">
           <img src="./img/Icon.png" height="16" alt="Cartify Logo" loading="lazy" style="margin-top: -1px" />
@@ -75,8 +75,9 @@
             <a class="text-reset" href="./login.html" title="Account">
               <img src="./img/MAN Icon.png" alt="Account" />
             </a>
-            <a class="text-reset" href="#" title="Cart">
-              <img src="./img/Button.png" alt="Cart" />
+            <a class="text-reset cart-icon-wrapper" href="#" title="Cart">
+              <i class="fa-solid fa-cart-shopping" style="color: #1d2538;" alt="cart"></i>
+              <span class="cart-badge">0</span>
             </a>
             <a class="text-reset" href="#" title="Wishlist">
               <img src="./img/Vector.png" alt="Wishlist" />
@@ -130,7 +131,7 @@
       <div class="sort-by mt-3 mt-md-0">
         Sort by:
         <div class="dropdown ms-2">
-          <button class="filter-btn bg-transparent px-2" type="button" data-bs-toggle="dropdown">
+          <button class="filter-btn bg-transparent px-2" type="button" data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false">
             Most Popular <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>
           </button>
           <ul class="dropdown-menu">
@@ -172,7 +173,7 @@
 
       <!-- Product 2 (Page 1) -->
       <div class="col product-item wow fadeInUp" data-wow-delay="0.2s" data-page="1">
-        <div class="product-card">
+        <div class="product-card" id>
           <div class="product-img-wrapper">
             <button class="btn-wishlist"><i class="fa-regular fa-heart"></i></button>
             <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=800" alt="Smart Watch Series X" />
@@ -359,22 +360,24 @@
       </div>
 
       <div class="col product-item wow fadeInUp" data-page="3" style="display: none;">
-        <div class="product-card">
-          <div class="product-img-wrapper">
-            <img src="./img/apple-iphone-17-pro-1.webp" alt="Acoustic Pod" />
-          </div>
-          <div class="product-details">
-            <div class="d-flex align-items-center mb-2">
-              <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
-              <span class="rating-count">(740)</span>
+        <a href="./product.html" class="text-decoration-none d-block">
+          <div class="product-card">
+            <div class="product-img-wrapper">
+              <img src="./img/product photoo.png" alt="Pro Sound Wireless Headphone" />
             </div>
-            <h3 class="product-title">Apple Iphone 17 Pro max</h3>
-            <div class="product-price-row">
-              <div class="price">$349.00</div>
-              <button class="btn-add-cart"><i class="fa-solid fa-cart-arrow-down"></i></button>
+            <div class="product-details">
+              <div class="d-flex align-items-center mb-2">
+                <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i></div>
+                <span class="rating-count">(740)</span>
+              </div>
+              <h3 class="product-title">Pro Sound Wireless Headphone</h3>
+              <div class="product-price-row">
+                <div class="price">$149.00</div>
+                <button class="btn-add-cart" onclick="event.preventDefault(); event.stopPropagation();"><i class="fa-solid fa-cart-arrow-down"></i></button>
+              </div>
             </div>
           </div>
-        </div>
+        </a>
       </div>
 
       <div class="col product-item wow fadeInUp" data-page="3" style="display: none;">
