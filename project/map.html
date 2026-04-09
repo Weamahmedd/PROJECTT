@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cartify Box Map</title>
+    <meta name="description"
+        content="Level up your lifestyle with our curated selection of high-performance gadgets. From pro-grade headphones to the latest workstation laptops." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./CSS/animate.min.css" />
+    <!-- WOW CSS -->
+    <link rel="stylesheet" href="./CSS/wow.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <!-- MDB Bootstrap -->
+    <link rel="stylesheet" href="./CSS/mdb.min.css" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./CSS/Style.css" />
+</head>
+
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+
+    <nav class="navbar navbar-expand-lg nav-home sticky-top">
+        <div class="container">
+            <a class="navbar-brand me-2 brand-name" href="./index.html">
+                <img src="./img/Icon.png" height="16" alt="Cartify Logo" loading="lazy" style="margin-top: -1px" />
+                Cartify
+            </a>
+
+            <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarButtonsExample"
+                aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarButtonsExample">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4 px-4 nav-linkss">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Categories.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./returns.html">Returns</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#support">Support</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex nav-search">
+                    <div class="input-group mx-3">
+                        <span class="input-group-text border-end-0 icon">
+                            <i class="fa-solid fa-magnifying-glass fa-xs" style="color: rgb(148, 163, 184)"></i>
+                        </span>
+                        <input class="form-control border-start-0 word" type="search" placeholder="Search Products..."
+                            style="text-overflow: ellipsis" />
+                    </div>
+                </form>
+
+                <div class="nav-icons-group">
+                    <a class="text-reset" href="./login.html" title="Account">
+                        <img src="./img/MAN Icon.png" alt="Account" />
+                    </a>
+                    <a class="text-reset cart-icon-wrapper" href="#" title="Cart">
+                        <i class="fa-solid fa-cart-shopping" style="color: #1d2538;" alt="cart"></i>
+                        <span class="cart-badge">0</span>
+                    </a>
+                    <a class="text-reset" href="#" title="Wishlist">
+                        <img src="./img/Vector.png" alt="Wishlist" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== END NAVBAR ========== -->
+
+
+    <!-- ========== MAIN CONTENT ========== -->
+    <main class="map-page-wrapper">
+        <div class="container-fluid p-0">
+            <div class="row g-0 map-page-layout-row">
+
+                <!-- LEFT SIDEBAR -->
+                <div class=" col-md-3 map-page-sidebar ">
+                    <div class="map-page-sidebar-inner">
+
+                        <h2 class="map-page-main-title">Find a Smart Return Box</h2>
+                        <p class="map-page-subtitle">Locate the nearest branded drop-off point</p>
+
+                        <div class="map-page-nearby-header card-round">
+                            <i class="fa-solid fa-location-arrow" style="color: rgb(20, 2, 124);"></i>
+                            <span>Nearby Locations</span>
+                        </div>
+
+                        <!-- Location Card 1 — Active -->
+                        <div class="map-page-location-card map-page-location-active gray-hover">
+                            <div class="map-page-card-top">
+                                <div class="map-page-card-info">
+                                    <h5 class="map-page-card-name">Mall Elgamaa</h5>
+                                    <p class="map-page-card-detail">0.4 miles away • 1200 Hay Elgamaa St.</p>
+                                </div>
+                                <span class="map-page-badge map-page-badge-open" style="background-color: #c2dfd2; color: #3fa95d">OPEN 24/7</span>
+                            </div>
+                            <div class="map-page-card-bottom">
+                                <a href="https://www.google.com/maps?ll=31.041386,31.38284&z=14&t=m&hl=ar&gl=EG&mapclient=embed&q=%D8%A7%D9%84%D9%85%D9%86%D8%B5%D9%88%D8%B1%D8%A9+%D8%A7%D9%84%D9%85%D9%86%D8%B5%D9%88%D8%B1%D8%A9+(%D9%82%D8%B3%D9%85+2)+%D8%A7%D9%84%D9%85%D9%86%D8%B5%D9%88%D8%B1%D8%A9+%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9+%D8%A7%D9%84%D8%AF%D9%82%D9%87%D9%84%D9%8A%D8%A9"  class="map-page-btn-primary text-center">Use This Location</a>
+                                <button class="map-page-btn-icon" title="Center on map">
+                                    <i class="fa-solid fa-crosshairs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Location Card 2 -->
+                        <div class="map-page-location-card gray-hover">
+                            <div class="map-page-card-top">
+                                <div class="map-page-card-info">
+                                    <h5 class="map-page-card-name">Greenwich Station</h5>
+                                    <p class="map-page-card-detail">1.2 miles away • Terminal 2, Level 1</p>
+                                </div>
+                                <span class="map-page-badge map-page-badge-available">AVAILABLE</span>
+                            </div>
+                            <div class="map-page-card-bottom">
+                                <button class="map-page-btn-secondary">Select Location</button>
+                                <button class="map-page-btn-icon" title="Center on map">
+                                    <i class="fa-solid fa-crosshairs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Location Card 3 -->
+                        <div class="map-page-location-card gray-hover">
+                            <div class="map-page-card-top">
+                                <div class="map-page-card-info">
+                                    <h5 class="map-page-card-name">Westside Mall Annex</h5>
+                                    <p class="map-page-card-detail">2.8 miles away • North Parking Lot</p>
+                                </div>
+                                <span class="map-page-badge map-page-badge-available">AVAILABLE</span>
+                            </div>
+                            <div class="map-page-card-bottom">
+                                <button class="map-page-btn-secondary">Select Location</button>
+                                <button class="map-page-btn-icon" title="Center on map">
+                                    <i class="fa-solid fa-crosshairs"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- RIGHT MAP -->
+                <div class=" col-md-9 map-page-embed-col">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27347.642683864633!2d31.403439224042614!3d31.04142128394389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f79db7a9053547%3A0xf8dab3bbed766c97!2z2KfZhNmF2YbYtdmI2LHYqdiMINin2YTZhdmG2LXZiNix2KkgKNmC2LPZhSAyKdiMINin2YTZhdmG2LXZiNix2KnYjCDZhdit2KfZgdi42Kkg2KfZhNiv2YLZh9mE2YrYqQ!5e0!3m2!1sar!2seg!4v1775665142928!5m2!1sar!2seg"
+                        class="map-page-iframe"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <!-- ========== END MAIN ========== -->
+
+
+    <!-- ========== FOOTER ========== -->
+
+    <footer class="footer wow fadeIn" data-wow-offset="100">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-logo">
+                        <img src="./img/Icon.png" height="16" alt="Cartify Logo" />
+                        <span class="brand-text">Cartify</span>
+                    </div>
+                    <p class="footer-desc">Your ultimate destination for the latest in tech and style. Experience the
+                        future of
+                        shopping.</p>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./Categories.html">Categories</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns & Refunds</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p class="newsletter-desc">Get the latest tech deals in your inbox.</p>
+                    <form class="newsletter-form">
+                        <div class="newsletter-input-wrapper mb-3">
+                            <input type="email" placeholder="email@example.com" class="form-control" />
+                        </div>
+                        <button type="submit" class="w-100">Join</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom mt-5">
+                <div class="copyright">
+                    &copy; 2026 Cartify E-commerce. All rights reserved.
+                </div>
+                <div class="bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== END FOOTER ========== -->
+
+
+    <!-- Scripts -->
+    <script src="./Js/all.min.js"></script>
+    <script src="./Js/wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <script src="./Js/jquery.slim.min.js"></script>
+    <script src="./Js/popper.min.js"></script>
+    <script src="./Js/bootstrap.min.js"></script>
+    <script src="./Js/mdb.umd.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="./Js/main.js"></script>
+</body>
+
+</html>

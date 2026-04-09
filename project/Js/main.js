@@ -904,3 +904,45 @@ result.innerHTML=dollar*55+"Egyptian pound";
 return false;
     }
 }
+
+
+
+
+
+// start validate function
+
+function validation() {
+  var user = document.getElementById("fullname").value;
+
+  var email = document.getElementById("email").value;
+
+  var pass = document.getElementById("password").value;
+
+  var confirm = document.getElementById("confirm-password").value;
+
+  var result = document.getElementById("result");
+
+ result.setAttribute("class","alert alert-danger text-center form-control rounded-pill py-1 px-3 small fw-bold ")
+
+
+  if (user == "" && email == "" && pass == "" && confirm == "") {
+    result.innerHTML = "please Insert Valid Data";
+    return false;
+  } else if (user.length < 5 || user.length > 15) {
+    result.innerHTML = "please Insert 5-15 character in user";
+    return false;
+  } else if (email.indexOf("@") == -1 || email.indexOf(".com") ==-1) {
+    result.innerHTML = "Please Enter Valid Email";
+    return false;
+  } else if (pass.length < 8) {
+    result.innerHTML = "please Insert atleast 8 character in pass";
+    return false;
+  } else if (pass != confirm) {
+    result.innerHTML = "please Matched pass";
+    return false;
+  } else {
+    return true;
+  }
+}
+
+// end validate function
