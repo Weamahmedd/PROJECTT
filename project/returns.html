@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cartify — Request return</title>
+    <meta
+      name="description"
+      content=" Easy returns with Smart Return Box. Select your item and reason to
+            generate a drop-off code."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./CSS/animate.min.css" />
+    <!-- WOW CSS -->
+    <link rel="stylesheet" href="./CSS/wow.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <!-- MDB Bootstrap -->
+    <link rel="stylesheet" href="./CSS/mdb.min.css" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./CSS/Style.css" />
+  </head>
+
+  <body>
+    <!-- ========== NAVBAR ========== -->
+
+    <nav class="navbar navbar-expand-lg nav-home sticky-top">
+      <div class="container">
+        <a class="navbar-brand me-2 brand-name" href="./index.html">
+          <img
+            src="./img/Icon.png"
+            height="16"
+            alt="Cartify Logo"
+            loading="lazy"
+            style="margin-top: -1px"
+          />
+          Cartify
+        </a>
+
+        <button
+          data-mdb-collapse-init
+          class="navbar-toggler"
+          type="button"
+          data-mdb-target="#navbarButtonsExample"
+          aria-controls="navbarButtonsExample"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarButtonsExample">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4 px-4 nav-linkss">
+            <li class="nav-item">
+              <a class="nav-link" data-page="home" href="./index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                data-page="categories"
+                href="./Categories.html"
+                >Categories</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-page="returns" href="./returns.html"
+                >Returns</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-page="support" href="#support"
+                >Support</a
+              >
+            </li>
+          </ul>
+
+          <form class="d-flex nav-search">
+            <div class="input-group mx-3">
+              <span class="input-group-text border-end-0 icon">
+                <i
+                  class="fa-solid fa-magnifying-glass fa-xs"
+                  style="color: rgb(148, 163, 184)"
+                ></i>
+              </span>
+              <input
+                class="form-control border-start-0 word"
+                type="search"
+                placeholder="Search Products..."
+                style="text-overflow: ellipsis"
+              />
+            </div>
+          </form>
+
+          <div class="nav-icons-group">
+            <a class="text-reset" href="./login.html" title="Account">
+              <img src="./img/MAN Icon.png" alt="Account" />
+            </a>
+            <a class="text-reset cart-icon-wrapper" href="#" title="Cart">
+              <i
+                class="fa-solid fa-cart-shopping"
+                style="color: #1d2538"
+                alt="cart"
+              ></i>
+              <span class="cart-badge">0</span>
+            </a>
+            <a class="text-reset" href="#" title="Wishlist">
+              <img src="./img/Vector.png" alt="Wishlist" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- ========== END NAVBAR ========== -->
+
+    <div class="main-container">
+      <!-- request View -->
+      <div id="request-view">
+        <div class="header-section mb-5">
+          <h2>Return Request</h2>
+          <p>
+            Easy returns with Smart Return Box. Select your item and reason to
+            generate a drop-off code.
+          </p>
+        </div>
+
+        <div class="row g-5">
+          <!-- Left Column: Items -->
+          <div class="col-lg-6">
+            <div class="section-title">
+              <i
+                class="fas fa-shopping-bag me-1"
+                style="color: var(--primary-color)"
+              ></i>
+              Select Item
+            </div>
+
+            <div class="item-card selected" onclick="selectItem(this)">
+              <div class="item-img-placeholder">
+                <img src="./img/tablet.png" alt="selected item" />
+              </div>
+              <div class="item-details">
+                <h6>Ultra-Quiet Humidifier</h6>
+                <p>Purchased 2 days ago</p>
+                <p>ORDER #882210</p>
+              </div>
+              <div class="price-tag">$89.00</div>
+            </div>
+
+            <div class="item-card" onclick="selectItem(this)">
+              <div class="item-img-placeholder">
+                <img src="./img/headphone.png" alt="" />
+              </div>
+              <div class="item-details">
+                <h6>Sonic Pro Headphones</h6>
+                <p>Purchased 5 days ago</p>
+                <p>ORDER #882104</p>
+              </div>
+              <div class="price-tag">$249.00</div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="col-lg-6">
+            <div class="section-title">
+              <i
+                class="fas fa-check-circle me-1"
+                style="color: var(--primary-color)"
+              ></i>
+              Return Reason
+            </div>
+            <div class="mb-4">
+              <div class="reason-chip active" onclick="selectReason(this)">
+                Defective item
+              </div>
+              <div class="reason-chip" onclick="selectReason(this)">
+                Too small/large
+              </div>
+              <div class="reason-chip" onclick="selectReason(this)">
+                Changed my mind
+              </div>
+              <div class="reason-chip" onclick="selectReason(this)">
+                Wrong item sent
+              </div>
+              <div class="reason-chip" onclick="selectReason(this)">Other</div>
+            </div>
+
+            <div class="section-title">
+              <i
+                class="fas fa-comment-alt me-1"
+                style="color: var(--primary-color)"
+              ></i>
+              Additional Notes
+            </div>
+            <textarea
+              class="note-area"
+              placeholder="Tell us more about the issue..."
+            ></textarea>
+
+            <button class="btn btn-generate" onclick="generateCode()">
+              Generate Return Code
+            </button>
+            <p class="text-center mt-3 text-muted" style="font-size: 0.75rem">
+              Valid for 24 hours at any Smart Return Box location.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!--  Success View -->
+      <div id="success-view">
+        <div class="row justify-content-center g-4">
+          <div class="col-md-6">
+            <div class="success-card">
+              <div class="status-section">
+                <div class="status-pill-circle">
+                  <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div class="status-text">
+                  <h6>Return Authorized</h6>
+                  <p class="small">Valid for the next 48 hours</p>
+                </div>
+              </div>
+
+              <div class="code-container">
+                <div class="card-container">
+                  <div class="qr-icon-bg">
+                    <svg
+                      class="box-icon"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+                      ></path>
+                      <polyline
+                        points="3.27 6.96 12 12.01 20.73 6.96"
+                      ></polyline>
+                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                  </div>
+                </div>
+
+                <p
+                  class="mb-0 text-muted small text-uppercase fw-bold"
+                  style="letter-spacing: 1.5px"
+                >
+                  Unique Access Key
+                </p>
+                <div class="code-number">1578832</div>
+              </div>
+              <button
+                data-mdb-ripple-init
+                type="button"
+                class="btn me-2 btn-cta-primary"
+              >
+                <i class="fas fa-location-arrow me-2"></i> Find Nearest Box
+              </button>
+
+              <button class="btn-cta-secondary">
+                <i class="fa-regular fa-copy"></i> Copy Code
+              </button>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card shadow-0 border p-4" style="border-radius: 20px">
+              <div class="row mb-4">
+                <div class="col-6">
+                  <p class="text-muted small mb-1">ORDER REFERENCE</p>
+                  <p class="fw-bold mb-0">#RT-882210</p>
+                </div>
+                <div class="col-6">
+                  <p class="text-muted small mb-1">PACKAGE DETAILS</p>
+                  <p class="fw-bold mb-0">2 Products</p>
+                </div>
+              </div>
+
+              <hr class="mb-4" />
+
+              <div
+                class="d-flex justify-content-between align-items-center mb-3"
+              >
+                <p class="fw-bold mb-0">Nearby Locations</p>
+                <span class="text-primary small fw-bold">3 AVAILABLE</span>
+              </div>
+
+              <div
+                class="p-3 border rounded-4 bg-light d-flex align-items-center mb-3"
+              >
+                <div class="bg-white p-2 rounded-3 me-3">
+                  <i class="fas fa-cube text-primary"></i>
+                </div>
+                <div class="flex-grow-1">
+                  <p class="mb-0 small fw-bold">West 6th St Hub</p>
+                  <p class="mb-0 text-muted" style="font-size: 0.7rem">
+                    0.8 KM AWAY
+                  </p>
+                </div>
+                <span class="badge rounded-pill bg-success px-2"
+                  >AVAILABLE</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ========== END CONTAINER ========== -->
+    <!-- ========== FOOTER ========== -->
+
+    <footer class="footer wow fadeIn" data-wow-offset="100">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-logo">
+              <img src="./img/Icon.png" height="16" alt="Cartify Logo" />
+              <span class="brand-text">Cartify</span>
+            </div>
+            <p class="footer-desc">
+              Your ultimate destination for the latest in tech and style.
+              Experience the future of shopping.
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./Categories.html">Categories</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Support</h4>
+            <ul class="footer-links">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Returns & Refunds</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Newsletter</h4>
+            <p class="newsletter-desc">
+              Get the latest tech deals in your inbox.
+            </p>
+            <form class="newsletter-form">
+              <div class="newsletter-input-wrapper mb-3">
+                <input
+                  type="email"
+                  placeholder="email@example.com"
+                  class="form-control"
+                />
+              </div>
+              <button type="submit" class="w-100">Join</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom mt-5">
+          <div class="copyright">
+            &copy; 2026 Cartify E-commerce. All rights reserved.
+          </div>
+          <div class="bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========== END FOOTER ========== -->
+    <!-- Scripts -->
+    <script src="./Js/all.min.js"></script>
+    <script src="./Js/wow.min.js"></script>
+    <script>
+      new WOW().init();
+    </script>
+    <script src="./Js/jquery.slim.min.js"></script>
+    <script src="./Js/popper.min.js"></script>
+    <script src="./Js/bootstrap.min.js"></script>
+    <script src="./Js/mdb.umd.min.js"></script>
+    <script src="./Js/main.js"></script>
+  </body>
+</html>

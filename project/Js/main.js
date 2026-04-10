@@ -1,45 +1,46 @@
 // ========== GLOBAL CART LOGIC ==========
-let cartCount = parseInt(sessionStorage.getItem('cartCount')) || 0;
+let cartCount = parseInt(sessionStorage.getItem("cartCount")) || 0;
 
 function updateCartBadge() {
-    const badges = document.querySelectorAll('.cart-badge');
-    badges.forEach(badge => {
-        badge.innerText = cartCount;
-        badge.style.display = cartCount > 0 ? 'flex' : 'none';
-        badge.style.transition = 'transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    });
+  const badges = document.querySelectorAll(".cart-badge");
+  badges.forEach((badge) => {
+    badge.innerText = cartCount;
+    badge.style.display = cartCount > 0 ? "flex" : "none";
+    badge.style.transition =
+      "transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+  });
 }
 
 // Universal listener for 'Add to Cart' buttons across all pages
-document.addEventListener('click', (e) => {
-    // Check for both .button-cartt (Home) and .btn-add-cart (Categories/Product)
-    const btn = e.target.closest('.button-cartt, .btn-add-cart');
-    if (btn) {
-        // Handle quantity if on a product details page
-        let quantityToAdd = 1;
-        const quantityDisplay = document.getElementById("quantity");
-        if (quantityDisplay && btn.classList.contains("w-100")) {
-            quantityToAdd = parseInt(quantityDisplay.innerText) || 1;
-        }
-
-        cartCount += quantityToAdd;
-        sessionStorage.setItem('cartCount', cartCount);
-        updateCartBadge();
-        
-        // Brief scale-up animation feedback
-        const badges = document.querySelectorAll('.cart-badge');
-        badges.forEach(badge => {
-            badge.style.transform = 'scale(1.5)';
-            setTimeout(() => badge.style.transform = 'scale(1)', 300);
-        });
+document.addEventListener("click", (e) => {
+  // Check for both .button-cartt (Home) and .btn-add-cart (Categories/Product)
+  const btn = e.target.closest(".button-cartt, .btn-add-cart");
+  if (btn) {
+    // Handle quantity if on a product details page
+    let quantityToAdd = 1;
+    const quantityDisplay = document.getElementById("quantity");
+    if (quantityDisplay && btn.classList.contains("w-100")) {
+      quantityToAdd = parseInt(quantityDisplay.innerText) || 1;
     }
+
+    cartCount += quantityToAdd;
+    sessionStorage.setItem("cartCount", cartCount);
+    updateCartBadge();
+
+    // Brief scale-up animation feedback
+    const badges = document.querySelectorAll(".cart-badge");
+    badges.forEach((badge) => {
+      badge.style.transform = "scale(1.5)";
+      setTimeout(() => (badge.style.transform = "scale(1)"), 300);
+    });
+  }
 });
 
 // Update badge immediately on script load (or wait for DOM)
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', updateCartBadge);
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", updateCartBadge);
 } else {
-    updateCartBadge();
+  updateCartBadge();
 }
 
 // ============================================
@@ -88,128 +89,134 @@ let filteredItems = Array.from(allCategoryProducts);
 let currentSortMode = "Most Popular";
 
 function updateCategoryPage() {
-    if (!productGrid) return;
+  if (!productGrid) return;
 
-    // 1. Sort the currently filtered items
-    sortItems(filteredItems, currentSortMode);
+  // 1. Sort the currently filtered items
+  sortItems(filteredItems, currentSortMode);
 
-    // 2. Calculate pagination
-    const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
-    if (currentPage > totalPages) currentPage = totalPages || 1;
+  // 2. Calculate pagination
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+  if (currentPage > totalPages) currentPage = totalPages || 1;
 
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
 
-    // 3. Hide all products first
-    allCategoryProducts.forEach(item => item.style.display = "none");
+  // 3. Hide all products first
+  allCategoryProducts.forEach((item) => (item.style.display = "none"));
 
-    // 4. Show only items for current page and move them to the grid to maintain order
-    filteredItems.forEach((item, index) => {
-        if (index >= startIndex && index < endIndex) {
-            item.style.display = "block";
-            productGrid.appendChild(item); // Re-order in DOM
-        }
-    });
+  // 4. Show only items for current page and move them to the grid to maintain order
+  filteredItems.forEach((item, index) => {
+    if (index >= startIndex && index < endIndex) {
+      item.style.display = "block";
+      productGrid.appendChild(item); // Re-order in DOM
+    }
+  });
 
-    updatePaginationUI(totalPages);
+  updatePaginationUI(totalPages);
 }
 
 function sortItems(arr, mode) {
-    if (mode.includes("Price: Low to High")) {
-        arr.sort((a, b) => getPrice(a) - getPrice(b));
-    } else if (mode.includes("Newest")) {
-        arr.sort((a, b) => {
-            const bNew = b.querySelector('.badge-new') ? 1 : 0;
-            const aNew = a.querySelector('.badge-new') ? 1 : 0;
-            return bNew - aNew;
-        });
-    } else if (mode.includes("Most Popular")) {
-        arr.sort((a, b) => getPopularity(b) - getPopularity(a));
-    }
+  if (mode.includes("Price: Low to High")) {
+    arr.sort((a, b) => getPrice(a) - getPrice(b));
+  } else if (mode.includes("Newest")) {
+    arr.sort((a, b) => {
+      const bNew = b.querySelector(".badge-new") ? 1 : 0;
+      const aNew = a.querySelector(".badge-new") ? 1 : 0;
+      return bNew - aNew;
+    });
+  } else if (mode.includes("Most Popular")) {
+    arr.sort((a, b) => getPopularity(b) - getPopularity(a));
+  }
 }
 
 function getPrice(el) {
-    const p = el.querySelector('.price')?.innerText || el.querySelector('.price-hot')?.innerText || "0";
-    return parseFloat(p.replace('$', '').replace(',', '')) || 0;
+  const p =
+    el.querySelector(".price")?.innerText ||
+    el.querySelector(".price-hot")?.innerText ||
+    "0";
+  return parseFloat(p.replace("$", "").replace(",", "")) || 0;
 }
 
 function getPopularity(el) {
-    const c = el.querySelector('.rating-count')?.innerText || "(0)";
-    let val = c.replace(/[(),]/g, '').toLowerCase();
-    if (val.includes('k')) return parseFloat(val) * 1000;
-    return parseFloat(val) || 0;
+  const c = el.querySelector(".rating-count")?.innerText || "(0)";
+  let val = c.replace(/[(),]/g, "").toLowerCase();
+  if (val.includes("k")) return parseFloat(val) * 1000;
+  return parseFloat(val) || 0;
 }
 
 function updatePaginationUI(totalPages) {
-    if (!customPaginationContainer) return;
-    
-    // We'll rebuild the pagination links based on totalPages
-    // but keep it simple: [Prev] [1] [2] [3] ... [Next]
-    
-    let html = `<li><a href="#" class="${currentPage === 1 ? 'disabled' : ''}" id="prev-page"><i class="fa-solid fa-chevron-left"></i></a></li>`;
-    
-    for (let i = 1; i <= totalPages; i++) {
-        html += `<li><a href="#" class="${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</a></li>`;
-    }
-    
-    html += `<li><a href="#" class="${currentPage === totalPages || totalPages === 0 ? 'disabled' : ''}" id="next-page"><i class="fa-solid fa-chevron-right"></i></a></li>`;
-    
-    customPaginationContainer.innerHTML = html;
+  if (!customPaginationContainer) return;
 
-    // Re-attach listeners because we replaced the innerHTML
-    customPaginationContainer.querySelectorAll("a").forEach(link => {
-        link.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (this.classList.contains('disabled')) return;
+  // We'll rebuild the pagination links based on totalPages
+  // but keep it simple: [Prev] [1] [2] [3] ... [Next]
 
-            const pageNum = parseInt(this.getAttribute('data-page'));
-            if (!isNaN(pageNum)) {
-                currentPage = pageNum;
-            } else if (this.id === "prev-page" && currentPage > 1) {
-                currentPage--;
-            } else if (this.id === "next-page" && currentPage < totalPages) {
-                currentPage++;
-            }
-            
-            updateCategoryPage();
-            if (productGrid) productGrid.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
+  let html = `<li><a href="#" class="${currentPage === 1 ? "disabled" : ""}" id="prev-page"><i class="fa-solid fa-chevron-left"></i></a></li>`;
+
+  for (let i = 1; i <= totalPages; i++) {
+    html += `<li><a href="#" class="${i === currentPage ? "active" : ""}" data-page="${i}">${i}</a></li>`;
+  }
+
+  html += `<li><a href="#" class="${currentPage === totalPages || totalPages === 0 ? "disabled" : ""}" id="next-page"><i class="fa-solid fa-chevron-right"></i></a></li>`;
+
+  customPaginationContainer.innerHTML = html;
+
+  // Re-attach listeners because we replaced the innerHTML
+  customPaginationContainer.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      if (this.classList.contains("disabled")) return;
+
+      const pageNum = parseInt(this.getAttribute("data-page"));
+      if (!isNaN(pageNum)) {
+        currentPage = pageNum;
+      } else if (this.id === "prev-page" && currentPage > 1) {
+        currentPage--;
+      } else if (this.id === "next-page" && currentPage < totalPages) {
+        currentPage++;
+      }
+
+      updateCategoryPage();
+      if (productGrid)
+        productGrid.scrollIntoView({ behavior: "smooth", block: "start" });
     });
+  });
 }
 
 // Event Listeners
 if (allCategoryProducts.length > 0) {
-    // Sort Listeners
-    sortDropdownItems.forEach(item => {
-        item.addEventListener('click', function(e) {
-            e.preventDefault();
-            currentSortMode = this.innerText.trim();
-            if (sortBtn) {
-                sortBtn.innerHTML = `${currentSortMode} <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>`;
-            }
-            currentPage = 1; // Reset to first page on sort
-            updateCategoryPage();
-        });
+  // Sort Listeners
+  sortDropdownItems.forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.preventDefault();
+      currentSortMode = this.innerText.trim();
+      if (sortBtn) {
+        sortBtn.innerHTML = `${currentSortMode} <i class="fa-solid fa-chevron-down ms-1" style="font-size:0.7rem"></i>`;
+      }
+      currentPage = 1; // Reset to first page on sort
+      updateCategoryPage();
     });
+  });
 
-    // Search Listener
-    if (categorySearchInput) {
-        categorySearchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase().trim();
-            filteredItems = Array.from(allCategoryProducts).filter(item => {
-                const title = item.querySelector('.product-title').innerText.toLowerCase();
-                return title.includes(query);
-            });
-            currentPage = 1;
-            updateCategoryPage();
-        });
-    }
+  // Search Listener
+  if (categorySearchInput) {
+    categorySearchInput.addEventListener("input", (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      filteredItems = Array.from(allCategoryProducts).filter((item) => {
+        const title = item
+          .querySelector(".product-title")
+          .innerText.toLowerCase();
+        return title.includes(query);
+      });
+      currentPage = 1;
+      updateCategoryPage();
+    });
+  }
 
-    // Pagination listeners are now handled dynamically within updatePaginationUI()
-    // and re-attached whenever the pagination is rebuilt.
+  // Pagination listeners are now handled dynamically within updatePaginationUI()
+  // and re-attached whenever the pagination is rebuilt.
 
-    // Initial run
-    updateCategoryPage();
+  // Initial run
+  updateCategoryPage();
 }
 
 // ========== NAVBAR (all pages) ==========
@@ -850,16 +857,16 @@ const MainProductImg = document.getElementById("product-img");
 const smallImg = document.getElementsByClassName("small-img");
 
 if (MainProductImg && smallImg.length > 0) {
-    MainProductImg.src = smallImg[0].src;
-    for (let i = 0; i < smallImg.length; i++) {
-        smallImg[i].onclick = function () {
-            MainProductImg.src = smallImg[i].src;
-            for (let j = 0; j < smallImg.length; j++) {
-                smallImg[j].classList.remove("active");
-            }
-            smallImg[i].classList.add("active");
-        };
-    }
+  MainProductImg.src = smallImg[0].src;
+  for (let i = 0; i < smallImg.length; i++) {
+    smallImg[i].onclick = function () {
+      MainProductImg.src = smallImg[i].src;
+      for (let j = 0; j < smallImg.length; j++) {
+        smallImg[j].classList.remove("active");
+      }
+      smallImg[i].classList.add("active");
+    };
+  }
 }
 
 const decreaseBtn = document.getElementById("decrease");
@@ -867,47 +874,41 @@ const increaseBtn = document.getElementById("increase");
 const quantitySpan = document.getElementById("quantity");
 
 if (decreaseBtn && increaseBtn && quantitySpan) {
-    let currentQty = parseInt(quantitySpan.textContent) || 1;
-    decreaseBtn.addEventListener("click", () => {
-        if (currentQty > 1) {
-            currentQty--;
-            quantitySpan.textContent = currentQty;
-        }
-    });
-    increaseBtn.addEventListener("click", () => {
-        currentQty++;
-        quantitySpan.textContent = currentQty;
-    });
+  let currentQty = parseInt(quantitySpan.textContent) || 1;
+  decreaseBtn.addEventListener("click", () => {
+    if (currentQty > 1) {
+      currentQty--;
+      quantitySpan.textContent = currentQty;
+    }
+  });
+  increaseBtn.addEventListener("click", () => {
+    currentQty++;
+    quantitySpan.textContent = currentQty;
+  });
 }
-
-
 
 // ========== profile PAGE ==========
 
-function convertDollar(){
-    var dollar = document.getElementById("dollar").value;
-    var result = document.getElementById("result");
-    if(dollar==""){
-        result.innerHTML="Enter Data";
-        return false;
-    }else if(isNaN(dollar)){
-        result.innerHTML="Enter Number Not Text";
-        return false;
-    }else if (dollar<0){
-        result.innerHTML="Enter postive Number";
-        return false;
-    }else if(dollar==0){
-        result.innerHTML="Enter Number Rather than 0"
-        return false;
-    }else{
-result.innerHTML=dollar*55+"Egyptian pound";
-return false;
-    }
+function convertDollar() {
+  var dollar = document.getElementById("dollar").value;
+  var result = document.getElementById("result");
+  if (dollar == "") {
+    result.innerHTML = "Enter Data";
+    return false;
+  } else if (isNaN(dollar)) {
+    result.innerHTML = "Enter Number Not Text";
+    return false;
+  } else if (dollar < 0) {
+    result.innerHTML = "Enter postive Number";
+    return false;
+  } else if (dollar == 0) {
+    result.innerHTML = "Enter Number Rather than 0";
+    return false;
+  } else {
+    result.innerHTML = dollar * 55 + "Egyptian pound";
+    return false;
+  }
 }
-
-
-
-
 
 // start validate function
 
@@ -922,8 +923,10 @@ function validation() {
 
   var result = document.getElementById("result");
 
- result.setAttribute("class","alert alert-danger text-center form-control rounded-pill py-1 px-3 small fw-bold ")
-
+  result.setAttribute(
+    "class",
+    "alert alert-danger text-center form-control rounded-pill py-1 px-3 small fw-bold ",
+  );
 
   if (user == "" && email == "" && pass == "" && confirm == "") {
     result.innerHTML = "please Insert Valid Data";
@@ -931,7 +934,7 @@ function validation() {
   } else if (user.length < 5 || user.length > 15) {
     result.innerHTML = "please Insert 5-15 character in user";
     return false;
-  } else if (email.indexOf("@") == -1 || email.indexOf(".com") ==-1) {
+  } else if (email.indexOf("@") == -1 || email.indexOf(".com") == -1) {
     result.innerHTML = "Please Enter Valid Email";
     return false;
   } else if (pass.length < 8) {
@@ -946,3 +949,49 @@ function validation() {
 }
 
 // end validate function
+// Selection functionality
+function selectItem(element) {
+  document
+    .querySelectorAll(".item-card")
+    .forEach((c) => c.classList.remove("selected"));
+  element.classList.add("selected");
+}
+
+function selectReason(element) {
+  document
+    .querySelectorAll(".reason-chip")
+    .forEach((c) => c.classList.remove("active"));
+  element.classList.add("active");
+}
+//RETURN PAGE
+// Navigation toggle
+function generateCode() {
+  document.getElementById("request-view").style.display = "none";
+  document.getElementById("success-view").style.display = "block";
+  window.scrollTo(0, 0);
+}
+//END RETURN PAGE
+// Make Categories active for main + all cat-pages
+(function () {
+  let currentNavPage =
+    window.location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.classList.remove("active");
+
+    let pageType = link.dataset.page;
+
+    if (pageType === "home" && currentNavPage === "index.html") {
+      link.classList.add("active");
+    } else if (pageType === "returns" && currentNavPage === "returns.html") {
+      link.classList.add("active");
+    } else if (
+      pageType === "categories" &&
+      (currentNavPage === "Categories.html" ||
+        currentNavPage.toLowerCase().includes("cat-") ||
+        currentNavPage.toLowerCase().includes("categories"))
+    ) {
+      link.classList.add("active");
+    }
+  });
+})();

@@ -1,14 +1,16 @@
 <!doctype html>
 <html lang="en" dir="ltr">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Profile — Cartify</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
     <!-- wow css -->
     <link rel="stylesheet" href="./CSS/wow.min.css" />
     <!-- fontawesome css -->
@@ -21,56 +23,95 @@
     <link rel="stylesheet" href="./CSS/mdb.min.css" />
     <!-- style css -->
     <link rel="stylesheet" href="./CSS/Style.css" />
-</head>
+  </head>
 
-<body class="site-viewport-body">
-
+  <body class="site-viewport-body">
     <!-- NAVBAR -->
 
     <nav class="navbar navbar-expand-lg nav-home sticky-top">
       <div class="container">
         <a class="navbar-brand me-2 brand-name" href="./index.html">
-          <img src="./img/Icon.png" height="16" alt="Cartify Logo" loading="lazy" style="margin-top: -1px" />
+          <img
+            src="./img/Icon.png"
+            height="16"
+            alt="Cartify Logo"
+            loading="lazy"
+            style="margin-top: -1px"
+          />
           Cartify
         </a>
 
-        <button data-mdb-collapse-init class="navbar-toggler" type="button" data-mdb-target="#navbarButtonsExample"
-          aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          data-mdb-collapse-init
+          class="navbar-toggler"
+          type="button"
+          data-mdb-target="#navbarButtonsExample"
+          aria-controls="navbarButtonsExample"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <i class="fas fa-bars"></i>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarButtonsExample">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0 mx-4 px-4 nav-linkss">
             <li class="nav-item">
-              <a class="nav-link" href="./index.html">Home</a>
+              <a class="nav-link" data-page="home" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./Categories.html">Categories</a>
+              <a
+                class="nav-link"
+                data-page="categories"
+                href="./Categories.html"
+                >Categories</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="./returns.html">Returns</a>
+              <a class="nav-link" data-page="returns" href="./returns.html"
+                >Returns</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#support">Support</a>
+              <a class="nav-link" data-page="support" href="#support"
+                >Support</a
+              >
             </li>
           </ul>
 
           <form class="d-flex nav-search">
             <div class="input-group mx-3">
               <span class="input-group-text border-end-0 icon">
-                <i class="fa-solid fa-magnifying-glass fa-xs" style="color: rgb(148, 163, 184)"></i>
+                <i
+                  class="fa-solid fa-magnifying-glass fa-xs"
+                  style="color: rgb(148, 163, 184)"
+                ></i>
               </span>
-              <input class="form-control border-start-0 word" type="search" placeholder="Search Products..."
-                style="text-overflow: ellipsis" />
+              <input
+                class="form-control border-start-0 word"
+                type="search"
+                placeholder="Search Products..."
+                style="text-overflow: ellipsis"
+              />
             </div>
           </form>
 
           <div class="nav-icons-group">
-            <a class="text-reset profile-nav-icon" href="./profile.html" title="Account">
-              <i class="fa-regular fa-circle-user" style="font-size:22px; color:#1d2538;"></i>
+            <a
+              class="text-reset profile-nav-icon"
+              href="./profile.html"
+              title="Account"
+            >
+              <i
+                class="fa-regular fa-circle-user"
+                style="font-size: 22px; color: #1d2538"
+              ></i>
             </a>
             <a class="text-reset cart-icon-wrapper" href="#" title="Cart">
-              <i class="fa-solid fa-cart-shopping" style="color: #1d2538;" alt="cart"></i>
+              <i
+                class="fa-solid fa-cart-shopping"
+                style="color: #1d2538"
+                alt="cart"
+              ></i>
               <span class="cart-badge">0</span>
             </a>
             <a class="text-reset" href="#" title="Wishlist">
@@ -83,202 +124,245 @@
 
     <!-- MAIN DASHBOARD -->
     <main class="dashboard-main-area">
-        <div class="container">
-            <!-- Profile Card -->
-            <section class="user-identity-card mb-4">
-                <div class="user-identity-left">
-                    <img src="./img/man.png"
-                        alt="ayman ali" class="user-portrait-img">
-                    <div class="user-credential-info">
-                        <h1 class="user-display-name">ayman ali</h1>
-                        <p class="user-email-text">ayman.ali@example.com</p>
-                        <span class="membership-status-badge ">GOLD MEMBER</span>
-                    </div>
+      <div class="container">
+        <!-- Profile Card -->
+        <section class="user-identity-card mb-4">
+          <div class="user-identity-left">
+            <img
+              src="./img/man.png"
+              alt="ayman ali"
+              class="user-portrait-img"
+            />
+            <div class="user-credential-info">
+              <h1 class="user-display-name">ayman ali</h1>
+              <p class="user-email-text">ayman.ali@example.com</p>
+              <span class="membership-status-badge">GOLD MEMBER</span>
+            </div>
+          </div>
+          <button class="profile-modify-btn">
+            <i class="fa-solid fa-pen"></i>
+            Edit Profile
+          </button>
+        </section>
+
+        <!-- Dashboard Grid layout using Bootstrap Grid System -->
+        <section class="row g-4 wow fadeInUp" data-wow-duration="1s">
+          <!-- Orders History -->
+          <div class="col-12 col-lg-6">
+            <div class="metric-panel-box h-100">
+              <div class="panel-top-row">
+                <h2 class="panel-heading-text">Orders History</h2>
+                <a href="#" class="panel-action-element">View All</a>
+              </div>
+              <div class="order-summary-item">
+                <div class="order-thumb-graphic-wrap">
+                  <img
+                    src="img/head-pro.png"
+                    alt="Studio Pro Wireless Headphones"
+                    class="order-thumb-graphic"
+                  />
                 </div>
-                <button class="profile-modify-btn">
-                    <i class="fa-solid fa-pen"></i>
-                    Edit Profile
+                <div class="order-text-details">
+                  <span class="order-tracking-num">ORDER #SS-9821</span>
+                  <h3 class="order-product-title">
+                    Studio Pro Wireless Headphones
+                  </h3>
+                  <p class="order-shipping-status">
+                    <span class="shipping-dot-indicator"></span> In Transit •
+                    Expected Friday
+                  </p>
+                </div>
+                <div class="order-end-icon">
+                  <i class="fa-solid fa-truck"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Returns -->
+          <div class="col-12 col-lg-6">
+            <div class="metric-panel-box h-100">
+              <div class="panel-top-row">
+                <h2 class="panel-heading-text">Recent Returns</h2>
+                <button class="panel-action-btn">
+                  <i class="fa-solid fa-arrows-rotate"></i>
                 </button>
-            </section>
+              </div>
+              <div class="return-status-wrapper">
+                <div class="return-status-header">
+                  <div class="return-icon-block">
+                    <img
+                      src="img/Backgroundd.png"
+                      alt="return-status-wrapper"
+                    />
+                  </div>
+                  <div>
+                    <h3 class="return-status-title-text">
+                      Smart Return Box Status
+                    </h3>
+                    <p class="return-box-ref">Box #SB-204 Active</p>
+                  </div>
+                </div>
+                <p class="return-directive-text">
+                  Your return request for 'Minimalist Desk Lamp' is ready. Place
+                  the item in the smart box.
+                </p>
+                <hr />
+                <div class="return-action-row">
+                  <span class="return-time-limit">
+                    <i class="fa-regular fa-clock"></i>
+                    Drop off by Tomorrow
+                  </span>
+                  <a href="#" class="return-code-link">Get Your Code</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <!-- Dashboard Grid layout using Bootstrap Grid System -->
-            <section class="row g-4 wow fadeInUp" data-wow-duration="1s">
+          <!-- Saved Addresses -->
+          <div class="col-12 col-lg-6">
+            <div class="metric-panel-box h-100">
+              <div class="panel-top-row">
+                <h2 class="panel-heading-text">Saved Addresses</h2>
+                <button class="panel-action-btn">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+              <div class="address-item-wrapper">
+                <div class="address-icon-block">
+                  <i class="fa-solid fa-house"></i>
+                </div>
+                <div class="address-text-group">
+                  <h3 class="address-label-text">Home (Default)</h3>
+                  <p class="address-location-line">
+                    123 Tech Valley Road, Suite 4B
+                  </p>
+                  <p class="address-location-line">Palo Alto, CA 94301</p>
+                </div>
+                <button class="address-options-trigger">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </button>
+              </div>
+            </div>
+          </div>
 
-                <!-- Orders History -->
-                <div class="col-12 col-lg-6">
-                    <div class="metric-panel-box h-100">
-                        <div class="panel-top-row">
-                            <h2 class="panel-heading-text">Orders History</h2>
-                            <a href="#" class="panel-action-element">View All</a>
-                        </div>
-                        <div class="order-summary-item">
-                            <div class="order-thumb-graphic-wrap">
-                                <img src="img/head-pro.png"
-                                    alt="Studio Pro Wireless Headphones" class="order-thumb-graphic">
-                            </div>
-                            <div class="order-text-details">
-                                <span class="order-tracking-num">ORDER #SS-9821</span>
-                                <h3 class="order-product-title">Studio Pro Wireless Headphones</h3>
-                                <p class="order-shipping-status">
-                                    <span class="shipping-dot-indicator"></span> In Transit • Expected Friday
-                                </p>
-                            </div>
-                            <div class="order-end-icon">
-                                <i class="fa-solid fa-truck"></i>
-                            </div>
-                        </div>
-                    </div>
+          <!-- Payment Methods -->
+          <div class="col-12 col-lg-6">
+            <div class="metric-panel-box h-100">
+              <div class="panel-top-row">
+                <h2 class="panel-heading-text">Payment Methods</h2>
+              </div>
+              <div class="payment-brands-grid">
+                <!-- Mastercard -->
+                <div class="payment-brand-item">
+                  <img
+                    src="img/cib_cc-mastercard.png"
+                    alt="Mastercard"
+                    class="payment-img-asset"
+                  />
+                </div>
+                <!-- VISA -->
+                <div class="payment-brand-item">
+                  <img
+                    src="img/visa.png"
+                    class="pay"
+                    alt="VISA"
+                    class="payment-img-asset"
+                  />
                 </div>
 
-                <!-- Recent Returns -->
-                <div class="col-12 col-lg-6">
-                    <div class="metric-panel-box h-100">
-                        <div class="panel-top-row">
-                            <h2 class="panel-heading-text">Recent Returns</h2>
-                            <button class="panel-action-btn">
-                                <i class="fa-solid fa-arrows-rotate"></i>
-                            </button>
-                        </div>
-                        <div class="return-status-wrapper">
-                            <div class="return-status-header  ">
-                                <div class="return-icon-block">
-                                    <img src="img/Backgroundd.png" alt="return-status-wrapper">
-                                </div>
-                                <div>
-                                    <h3 class="return-status-title-text">Smart Return Box Status</h3>
-                                    <p class="return-box-ref">Box #SB-204 Active</p>
-                                </div>
-                            </div>
-                            <p class="return-directive-text">Your return request for 'Minimalist Desk Lamp' is ready.
-                                Place the item in the smart box.</p>
-                                <hr>
-                            <div class="return-action-row">
-                                <span class="return-time-limit">
-                                    <i class="fa-regular fa-clock"></i>
-                                    Drop off by Tomorrow
-                                </span>
-                                <a href="#" class="return-code-link">Get Your Code</a>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Paypal -->
+                <div class="payment-brand-item">
+                  <img
+                    src="img/ic_baseline-paypal.png"
+                    alt="Paypal"
+                    class="payment-img-asset"
+                  />
                 </div>
 
-                <!-- Saved Addresses -->
-                <div class="col-12 col-lg-6">
-                    <div class="metric-panel-box h-100">
-                        <div class="panel-top-row">
-                            <h2 class="panel-heading-text">Saved Addresses</h2>
-                            <button class="panel-action-btn">
-                                <i class="fa-solid fa-plus"></i>
-                            </button>
-                        </div>
-                        <div class="address-item-wrapper">
-                            <div class="address-icon-block">
-                                <i class="fa-solid fa-house"></i>
-                            </div>
-                            <div class="address-text-group">
-                                <h3 class="address-label-text">Home (Default)</h3>
-                                <p class="address-location-line">123 Tech Valley Road, Suite 4B</p>
-                                <p class="address-location-line">Palo Alto, CA 94301</p>
-                            </div>
-                            <button class="address-options-trigger">
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                            </button>
-                        </div>
-                    </div>
+                <!-- Cash / Generic -->
+                <div class="payment-brand-item">
+                  <img
+                    src="img/flowbite_cash-outline.png"
+                    alt="Cash"
+                    class="payment-img-asset"
+                  />
                 </div>
-
-                <!-- Payment Methods -->
-                <div class="col-12 col-lg-6">
-                    <div class="metric-panel-box h-100">
-                        <div class="panel-top-row">
-                            <h2 class="panel-heading-text">Payment Methods</h2>
-                        </div>
-                        <div class="payment-brands-grid">
-                    
-                            <!-- Mastercard -->
-                            <div class="payment-brand-item">
-                                <img src="img/cib_cc-mastercard.png" alt="Mastercard" class="payment-img-asset">
-                            </div>
-                            <!-- VISA -->
-                            <div class="payment-brand-item">
-                                <img src="img/visa.png" class="pay" alt="VISA" class="payment-img-asset">
-                            </div>
-                            
-                            <!-- Paypal -->
-                            <div class="payment-brand-item" >
-                                <img src="img/ic_baseline-paypal.png" alt="Paypal" class="payment-img-asset">
-                            </div>
-                            
-                            <!-- Cash / Generic -->
-                            <div class="payment-brand-item">
-                                <img src="img/flowbite_cash-outline.png" alt="Cash" class="payment-img-asset">
-                            </div>
-                            <!-- Apple Pay -->
-                            <div class="payment-brand-item">
-                                <img src="img/cib_apple-pay.png" alt="Apple Pay" class="payment-img-asset">
-                            </div>
-                        </div>
-                    </div>
+                <!-- Apple Pay -->
+                <div class="payment-brand-item">
+                  <img
+                    src="img/cib_apple-pay.png"
+                    alt="Apple Pay"
+                    class="payment-img-asset"
+                  />
                 </div>
-
-            </section>
-        </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
 
-     <footer class="footer wow fadeIn" data-wow-offset="100">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-3 col-md-6">
-          <div class="footer-logo">
-            <img src="./img/Icon.png" height="16" alt="Cartify Logo" />
-            <span class="brand-text">Cartify</span>
-          </div>
-          <p class="footer-desc">Your ultimate destination for the latest in tech and style. Experience the future of
-            shopping.</p>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <h4 class="footer-title">Quick Links</h4>
-          <ul class="footer-links">
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="./Categories.html">Categories</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <h4 class="footer-title">Support</h4>
-          <ul class="footer-links">
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Returns & Refunds</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-3 col-md-6">
-          <h4 class="footer-title">Newsletter</h4>
-          <p class="newsletter-desc">Get the latest tech deals in your inbox.</p>
-          <form class="newsletter-form">
-            <div class="newsletter-input-wrapper mb-3">
-              <input type="email" placeholder="email@example.com" class="form-control" />
+    <footer class="footer wow fadeIn" data-wow-offset="100">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="footer-logo">
+              <img src="./img/Icon.png" height="16" alt="Cartify Logo" />
+              <span class="brand-text">Cartify</span>
             </div>
-            <button type="submit" class="w-100">Join</button>
-          </form>
+            <p class="footer-desc">
+              Your ultimate destination for the latest in tech and style.
+              Experience the future of shopping.
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./Categories.html">Categories</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Support</h4>
+            <ul class="footer-links">
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Shipping Info</a></li>
+              <li><a href="#">Returns & Refunds</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <h4 class="footer-title">Newsletter</h4>
+            <p class="newsletter-desc">
+              Get the latest tech deals in your inbox.
+            </p>
+            <form class="newsletter-form">
+              <div class="newsletter-input-wrapper mb-3">
+                <input
+                  type="email"
+                  placeholder="email@example.com"
+                  class="form-control"
+                />
+              </div>
+              <button type="submit" class="w-100">Join</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="footer-bottom mt-5">
+          <div class="copyright">
+            &copy; 2026 Cartify E-commerce. All rights reserved.
+          </div>
+          <div class="bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
         </div>
       </div>
-
-      <div class="footer-bottom mt-5">
-        <div class="copyright">
-          &copy; 2026 Cartify E-commerce. All rights reserved.
-        </div>
-        <div class="bottom-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
-
+    </footer>
 
     <!-- fontawesome js -->
     <script src="./Js/all.min.js"></script>
@@ -289,12 +373,11 @@
     <!-- wow js -->
     <script src="./Js/wow.min.js"></script>
     <script>
-        new WOW().init();
+      new WOW().init();
     </script>
     <!-- mdbootstrap js -->
     <script src="./Js/mdb.umd.min.js"></script>
     <!-- main js -->
     <script src="./Js/main.js"></script>
-</body>
-
+  </body>
 </html>
