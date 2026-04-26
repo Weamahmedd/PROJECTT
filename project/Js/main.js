@@ -1860,3 +1860,16 @@ function initTrackPage() {
 }
 
 document.addEventListener("DOMContentLoaded", initTrackPage);
+
+// Smooth scroll to hash on load
+window.addEventListener("load", () => {
+  if (window.location.hash) {
+    const element = document.querySelector(window.location.hash);
+    if (element) {
+      setTimeout(() => {
+        element.scrollIntoView({ behavior: "smooth" });
+      }, 500);
+    }
+  }
+});
+
