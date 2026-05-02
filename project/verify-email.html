@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cartify — Verify Your Email</title>
+    <meta name="description" content="Verify your email address to reset your Cartify account password." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="./CSS/animate.min.css" />
+    <!-- WOW CSS -->
+    <link rel="stylesheet" href="./CSS/wow.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <!-- MDB Bootstrap -->
+    <link rel="stylesheet" href="./CSS/mdb.min.css" />
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="./CSS/Style.css" />
+    <!-- Auth Screens -->
+    <link rel="stylesheet" href="./CSS/auth-screens.css" />
+  </head>
+
+  <body class="auth-page min-vh-100 d-flex flex-column align-items-center justify-content-center bg-light m-0">
+    <div class="container d-flex flex-column align-items-center px-3">
+
+
+      <!-- Card -->
+      <div class="login-container bg-white rounded-5 shadow-lg p-5 animate__animated animate__zoomIn animate__faster" style="max-width: 520px; width: 100%;">
+
+        <!-- Icon -->
+        <div class="d-flex align-items-center justify-content-center mx-auto mb-3 wow animate__animated animate__bounceIn" data-wow-delay="0.3s">
+          <div class="auth-icon-circle">
+            <i class="fa-solid fa-envelope-open-text"></i>
+          </div>
+        </div>
+
+        <!-- Title -->
+        <div class="text-center mb-4 wow animate__animated animate__fadeInUp" data-wow-delay="0.4s">
+          <h1 class="h4 fw-bold mb-1 header-title">Verify Your Email</h1>
+          <p class="text-muted small mb-0">We've sent a 6-digit verification code to<br><span class="fw-semibold text-dark" id="display-email">your email</span><br>Please enter it below to continue.</p>
+        </div>
+
+        <!-- OTP Form -->
+        <form id="verify-form">
+          <div class="d-flex justify-content-center gap-2 mb-3 wow animate__animated animate__fadeInUp" data-wow-delay="0.5s">
+            <input type="text" maxlength="1" class="otp-box form-control text-center fw-bold" id="otp1" inputmode="numeric" required />
+            <input type="text" maxlength="1" class="otp-box form-control text-center fw-bold" id="otp2" inputmode="numeric" required />
+            <input type="text" maxlength="1" class="otp-box form-control text-center fw-bold" id="otp3" inputmode="numeric" required />
+            <input type="text" maxlength="1" class="otp-box form-control text-center fw-bold" id="otp4" inputmode="numeric" required />
+            <input type="text" maxlength="1" class="otp-box form-control text-center fw-bold" id="otp5" inputmode="numeric" required />
+            <input type="text" maxlength="1" class="otp-box form-control text-center fw-bold" id="otp6" inputmode="numeric" required />
+          </div>
+
+          <!-- OTP Error -->
+          <div id="otp-error" class="rounded-3 px-3 py-2 mb-3 small fw-semibold text-center" style="display:none; background:#fef2f2; color:#dc2626;">
+            <i class="fa-solid fa-circle-exclamation me-1"></i>Invalid code. Please try again.
+          </div>
+
+          <button type="submit" id="verify-btn" class="btn btn-primary w-100 rounded-pill py-2 fw-bold primary-btn h-50 wow animate__animated animate__fadeInUp" data-wow-delay="0.6s">
+            <span id="verify-btn-text">Verify Code</span>
+            <span id="verify-spinner" class="spinner-border spinner-border-sm ms-2" style="display:none;"></span>
+          </button>
+        </form>
+
+        <!-- Resend -->
+        <div class="text-center mt-4 wow animate__animated animate__fadeIn" data-wow-delay="0.7s">
+          <p class="text-muted small mb-0">
+            Didn't receive the code?
+            <a href="forgot-password.html" class="fw-bold text-decoration-none text-primary">Resend Code</a>
+          </p>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <p class="text-muted mt-4 wow animate__animated animate__fadeIn" data-wow-delay="0.9s" style="font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;">
+        © 2026 Cartify. Secure Authentication.
+      </p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="./Js/all.min.js"></script>
+    <script src="./Js/wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <script src="./Js/jquery.slim.min.js"></script>
+    <script src="./Js/popper.min.js"></script>
+    <script src="./Js/bootstrap.min.js"></script>
+    <script src="./Js/mdb.umd.min.js"></script>
+    <script>
+      // Show email from sessionStorage
+      var storedEmail = sessionStorage.getItem('cartify_email');
+      if (storedEmail) {
+        document.getElementById('display-email').textContent = storedEmail;
+      }
+
+      // OTP auto-focus between inputs (numbers only)
+      var otpBoxes = document.querySelectorAll('.otp-box');
+      otpBoxes.forEach(function(input, idx, inputs) {
+        input.addEventListener('input', function() {
+          // allow only digits
+          this.value = this.value.replace(/[^0-9]/g, '');
+          if (this.value.length === 1 && idx < inputs.length - 1) {
+            inputs[idx + 1].focus();
+          }
+        });
+        input.addEventListener('keydown', function(e) {
+          if (e.key === 'Backspace' && !this.value && idx > 0) {
+            inputs[idx - 1].focus();
+          }
+        });
+      });
+
+      // Verify form submit
+      document.getElementById('verify-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Collect entered code
+        var entered = '';
+        otpBoxes.forEach(function(box) { entered += box.value; });
+
+        var saved = sessionStorage.getItem('cartify_otp');
+        var errorDiv = document.getElementById('otp-error');
+        var btn      = document.getElementById('verify-btn');
+        var btnText  = document.getElementById('verify-btn-text');
+        var spinner  = document.getElementById('verify-spinner');
+
+        if (entered === saved) {
+          // Correct — loading state then navigate
+          btn.disabled = true;
+          btnText.textContent = 'Verifying...';
+          spinner.style.display = 'inline-block';
+          errorDiv.style.display = 'none';
+          // Mark OTP verified so reset-password page allows access
+          sessionStorage.setItem('cartify_otp_verified', 'true');
+          setTimeout(function() {
+            window.location.href = 'reset-password.html';
+          }, 600);
+        } else {
+          // Wrong — shake + show error
+          errorDiv.style.display = 'block';
+          otpBoxes.forEach(function(box) {
+            box.style.borderColor = '#ef4444';
+            setTimeout(function() { box.style.borderColor = ''; }, 1500);
+          });
+          // Clear inputs and refocus first
+          otpBoxes.forEach(function(box) { box.value = ''; });
+          otpBoxes[0].focus();
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,122 @@
+/* ============================================
+   AUTH SCREENS — SUPPLEMENTAL STYLES
+   (forgot-password, verify-email, reset-password, password-success)
+   Compatible with Bootstrap + Style.css project theme
+   ============================================ */
+
+/* ===== PASSWORD FIELD WITH INNER EYE ICON ===== */
+.pw-field-wrapper {
+  position: relative;
+  display: block;
+}
+
+.pw-field-wrapper .form-control {
+  /* make room for the icon on the right */
+  padding-right: 3rem !important;
+}
+
+.pw-toggle-btn {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  cursor: pointer;
+  color: #94a3b8;
+  font-size: 1rem;
+  transition: color 0.2s ease;
+  z-index: 5;
+}
+
+.pw-toggle-btn:hover {
+  color: var(--primary-color);
+}
+
+.pw-toggle-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+/* ===== AUTH PAGE BACKGROUND ===== */
+.auth-page {
+  background: linear-gradient(135deg, #f5f6f8 0%, #e8edf5 100%) !important;
+}
+
+/* ===== AUTH ICON CIRCLE ===== */
+.auth-icon-circle {
+  width: 68px;
+  height: 68px;
+  background-color: #eef2ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-icon-circle i {
+  color: var(--primary-color);
+  font-size: 1.75rem;
+}
+
+/* Success variant — filled blue circle */
+.auth-icon-circle--success {
+  background-color: var(--primary-color);
+}
+
+.auth-icon-circle--success i {
+  color: #ffffff;
+}
+
+/* ===== OTP INPUTS ===== */
+.otp-box {
+  width: 52px !important;
+  height: 60px !important;
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  background-color: #f1f5f9 !important;
+  border: 2px solid transparent !important;
+  border-radius: 14px !important;
+  transition: all 0.25s ease;
+  padding: 0 !important;
+}
+
+.otp-box:focus {
+  background-color: #ffffff !important;
+  border-color: var(--primary-light) !important;
+  box-shadow: 0 0 0 4px rgba(92, 97, 255, 0.12) !important;
+  outline: none;
+}
+
+/* ===== SECURITY LEVEL BAR ===== */
+.security-segment {
+  flex: 1;
+  height: 4px;
+  border-radius: 4px;
+  background-color: #e2e8f0;
+  transition: background 0.3s ease;
+}
+
+.security-segment.active {
+  background-color: var(--primary-color);
+}
+
+/* ===== CUSTOM INPUT OVERRIDE (rounded-pill compat) ===== */
+.form-control.custom-input {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.form-control.custom-input:focus {
+  box-shadow: 0 0 0 4px rgba(92, 97, 255, 0.12) !important;
+  border-color: var(--primary-light) !important;
+  background-color: #ffffff !important;
+}
+
+.form-control.custom-input::placeholder {
+  color: var(--text-light);
+}
