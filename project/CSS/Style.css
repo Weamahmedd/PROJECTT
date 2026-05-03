@@ -120,8 +120,9 @@ img {
 }
 
 .brand-name img {
-  width: 33px;
-  height: 28.5px;
+    height: 40px;
+    width: auto;
+    object-fit: contain;
 }
 
 .nav-linkss {
@@ -700,6 +701,12 @@ input.newsletter-input-sep {
 .footer-home h6 {
   margin-top: 0px;
   color: #ffffff;
+}
+
+.footer-home h6 img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
 }
 
 .social-icons {
@@ -1368,6 +1375,12 @@ input.newsletter-input-sep {
   align-items: center;
   margin-bottom: 16px;
   gap: 8px;
+}
+
+.footer-logo img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-desc {

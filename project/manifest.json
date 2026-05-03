@@ -1,0 +1,21 @@
+{
+  "name": "Cartify E-commerce",
+  "short_name": "Cartify",
+  "description": "Your ultimate destination for the latest in tech and style. Experience the future of shopping.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a237e",
+  "icons": [
+    {
+      "src": "./img/Icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./img/Icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

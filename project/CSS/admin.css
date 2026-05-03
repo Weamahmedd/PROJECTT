@@ -1,0 +1,206 @@
+/* Admin Dashboard Specific Styles */
+:root {
+  --admin-sidebar-width: 260px;
+  --admin-primary: #1d2538; /* Matches main theme */
+  --admin-accent: #0d6efd;
+  --admin-bg: #f4f6f9;
+  --admin-text: #333;
+}
+
+body.admin-body {
+  background-color: var(--admin-bg);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Sidebar */
+.admin-sidebar {
+  width: var(--admin-sidebar-width);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  overflow-y: auto;
+}
+
+.admin-sidebar .brand {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--admin-primary);
+  border-bottom: 1px solid #eee;
+  text-decoration: none;
+}
+
+.admin-sidebar .brand img {
+  height: 45px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.admin-nav {
+  padding: 20px 0;
+  list-style: none;
+  margin: 0;
+}
+
+.admin-nav li a {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  color: #6c757d;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+  border-left: 3px solid transparent;
+}
+
+.admin-nav li a i {
+  width: 24px;
+  font-size: 1.1rem;
+  margin-right: 10px;
+}
+
+.admin-nav li a:hover, .admin-nav li a.active {
+  color: var(--admin-accent);
+  background-color: #f8f9fa;
+  border-left-color: var(--admin-accent);
+}
+
+/* Main Content */
+.admin-main {
+  margin-left: var(--admin-sidebar-width);
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* Topbar */
+.admin-topbar {
+  height: 70px;
+  background-color: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+}
+
+.admin-topbar .search-bar {
+  position: relative;
+  width: 300px;
+}
+
+.admin-topbar .search-bar input {
+  width: 100%;
+  padding: 10px 15px 10px 40px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  outline: none;
+}
+
+.admin-topbar .search-bar i {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+}
+
+.admin-profile {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.admin-profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Dashboard Cards */
+.stat-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.stat-card .icon.primary { background: rgba(13, 110, 253, 0.1); color: #0d6efd; }
+.stat-card .icon.success { background: rgba(25, 135, 84, 0.1); color: #198754; }
+.stat-card .icon.warning { background: rgba(255, 193, 7, 0.1); color: #ffc107; }
+.stat-card .icon.danger { background: rgba(220, 53, 69, 0.1); color: #dc3545; }
+
+/* Tables */
+.admin-table-container {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  overflow: hidden;
+}
+
+.table-custom th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+  padding: 15px 20px;
+  border-bottom: 2px solid #eee;
+}
+
+.table-custom td {
+  padding: 15px 20px;
+  vertical-align: middle;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.status-badge.completed { background: #d1e7dd; color: #0f5132; }
+.status-badge.pending { background: #fff3cd; color: #856404; }
+.status-badge.cancelled { background: #f8d7da; color: #842029; }
+
+/* Responsive */
+@media (max-width: 991px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+  .admin-sidebar.show {
+    transform: translateX(0);
+  }
+  .admin-main {
+    margin-left: 0;
+  }
+}

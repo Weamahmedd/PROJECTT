@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Ultra-Bass Headphones",
+      "price": 299.0,
+      "category": "Electronics",
+      "stock": 45,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=1470&auto=format&fit=crop"
+    },
+    {
+      "id": 2,
+      "name": "Smart Watch Series X",
+      "price": 449.0,
+      "category": "Wearables",
+      "stock": 12,
+      "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?q=80&w=1200&auto=format&fit=crop"
+    },
+    {
+      "id": 3,
+      "name": "Smart Lens Camera",
+      "price": 189.0,
+      "category": "Electronics",
+      "stock": 30,
+      "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1200&auto=format&fit=crop"
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-001",
+      "customerName": "John Doe",
+      "date": "2026-05-02",
+      "total": 299.0,
+      "status": "Completed"
+    },
+    {
+      "id": "ORD-002",
+      "customerName": "Alice Smith",
+      "date": "2026-05-01",
+      "total": 1249.0,
+      "status": "Processing"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin User",
+      "email": "admin@cartify.com",
+      "role": "admin"
+    }
+  ]
+}

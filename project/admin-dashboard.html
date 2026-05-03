@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — Cartify</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <!-- Admin Stylesheet -->
+    <link rel="stylesheet" href="./CSS/admin.css" />
+  </head>
+
+  <body class="admin-body">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <a href="admin-dashboard.html" class="brand">
+        <img src="./img/icon.png" alt="Cartify Logo" />
+        </a>
+      <ul class="admin-nav">
+        <li>
+          <a href="admin-dashboard.html" class="active">
+            <i class="fas fa-home"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-box-open"></i> Products
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-shopping-cart"></i> Orders
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-users"></i> Customers
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-chart-line"></i> Analytics
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-cog"></i> Settings
+          </a>
+        </li>
+        <li class="mt-4">
+          <a href="index.html" class="text-danger">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <!-- Topbar -->
+      <header class="admin-topbar">
+        <button class="btn btn-light d-lg-none" id="sidebarToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="search-bar d-none d-md-block">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search across dashboard..." />
+        </div>
+
+        <div class="admin-profile">
+          <div class="position-relative">
+            <i class="fas fa-bell text-muted fs-5"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.6rem;">
+              3
+            </span>
+          </div>
+          <div class="dropdown ms-3">
+            <a href="#" class="d-flex align-items-center text-decoration-none dropdown-toggle text-dark" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="./img/MAN Icon.png" alt="" width="32" height="32" class="rounded-circle me-2 bg-light">
+              <strong>Admin</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="dropdownUser1">
+              <li><a class="dropdown-item" href="#">Profile</a></li>
+              <li><a class="dropdown-item" href="#">Settings</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-danger" href="index.html">Sign out</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="p-4">
+        <h2 class="fw-bold mb-4">Overview</h2>
+
+        <!-- Stats Row -->
+        <div class="row g-4 mb-5">
+          <div class="col-xl-3 col-md-6">
+            <div class="stat-card">
+              <div>
+                <p class="text-muted mb-1 small text-uppercase fw-bold">Total Revenue</p>
+                <h3 class="fw-bold mb-0">$24,500</h3>
+              </div>
+              <div class="icon primary"><i class="fas fa-dollar-sign"></i></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="stat-card">
+              <div>
+                <p class="text-muted mb-1 small text-uppercase fw-bold">Total Orders</p>
+                <h3 class="fw-bold mb-0">1,245</h3>
+              </div>
+              <div class="icon success"><i class="fas fa-shopping-bag"></i></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="stat-card">
+              <div>
+                <p class="text-muted mb-1 small text-uppercase fw-bold">Active Customers</p>
+                <h3 class="fw-bold mb-0">842</h3>
+              </div>
+              <div class="icon warning"><i class="fas fa-users"></i></div>
+            </div>
+          </div>
+          <div class="col-xl-3 col-md-6">
+            <div class="stat-card">
+              <div>
+                <p class="text-muted mb-1 small text-uppercase fw-bold">Low Stock Items</p>
+                <h3 class="fw-bold mb-0">12</h3>
+              </div>
+              <div class="icon danger"><i class="fas fa-exclamation-triangle"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Orders Table -->
+        <h4 class="fw-bold mb-3">Recent Orders</h4>
+        <div class="admin-table-container">
+          <div class="table-responsive">
+            <table class="table table-custom mb-0">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="fw-bold">#ORD-001</td>
+                  <td>John Doe</td>
+                  <td>May 02, 2026</td>
+                  <td>$299.00</td>
+                  <td><span class="status-badge completed">Completed</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">#ORD-002</td>
+                  <td>Alice Smith</td>
+                  <td>May 01, 2026</td>
+                  <td>$1,249.00</td>
+                  <td><span class="status-badge pending">Processing</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">#ORD-003</td>
+                  <td>Bob Johnson</td>
+                  <td>Apr 30, 2026</td>
+                  <td>$59.00</td>
+                  <td><span class="status-badge cancelled">Cancelled</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button></td>
+                </tr>
+                <tr>
+                  <td class="fw-bold">#ORD-004</td>
+                  <td>Sarah Williams</td>
+                  <td>Apr 29, 2026</td>
+                  <td>$89.00</td>
+                  <td><span class="status-badge completed">Completed</span></td>
+                  <td><button class="btn btn-sm btn-outline-primary"><i class="fas fa-eye"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="./Js/jquery.slim.min.js"></script>
+    <script src="./Js/bootstrap.min.js"></script>
+    <script>
+      // Simple sidebar toggle
+      document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('show');
+      });
+    </script>
+  </body>
+</html>

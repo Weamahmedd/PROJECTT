@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Products — Admin Cartify</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="./CSS/admin.css" />
+  </head>
+
+  <body class="admin-body">
+    <!-- Sidebar -->
+    <aside class="admin-sidebar" id="sidebar">
+      <a href="admin-dashboard.html" class="brand">
+        <img src="./img/icon.png" alt="Cartify Logo" />
+        </a>
+      <ul class="admin-nav">
+        <li>
+          <a href="admin-dashboard.html">
+            <i class="fas fa-home"></i> Dashboard
+          </a>
+        </li>
+        <li>
+          <a href="admin-products.html" class="active">
+            <i class="fas fa-box-open"></i> Products
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-shopping-cart"></i> Orders
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-users"></i> Customers
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-chart-line"></i> Analytics
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <button class="btn btn-light d-lg-none" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="search-bar d-none d-md-block">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search products..." />
+        </div>
+      </header>
+
+      <div class="p-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="fw-bold mb-0">Products</h2>
+          <button class="btn btn-primary shadow-sm"><i class="fas fa-plus me-2"></i>Add New Product</button>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+          <div class="card-body d-flex gap-3 align-items-center">
+             <span class="fw-bold text-muted">Filter by:</span>
+             <select class="form-select w-auto border-0 bg-light rounded-pill">
+               <option selected>Category</option>
+               <option>Electronics</option>
+               <option>Fashion</option>
+               <option>Beauty</option>
+             </select>
+             <select class="form-select w-auto border-0 bg-light rounded-pill">
+               <option selected>Status</option>
+               <option>In Stock</option>
+               <option>Out of Stock</option>
+             </select>
+             <button class="btn btn-light rounded-pill ms-auto"><i class="fas fa-filter"></i> Apply</button>
+          </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="admin-table-container">
+          <div class="table-responsive">
+            <table class="table table-custom mb-0">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsTableBody">
+                <!-- Data will be populated dynamically from backend -->
+                <tr><td colspan="6" class="text-center py-4">Loading products...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        
+        <!-- Pagination -->
+        <nav class="mt-4 d-flex justify-content-end">
+          <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </main>
+
+    <script src="./Js/jquery.slim.min.js"></script>
+    <script src="./Js/bootstrap.min.js"></script>
+    <script>
+      // Sidebar toggle
+      document.getElementById('sidebarToggle')?.addEventListener('click', function() {
+        document.getElementById('sidebar').classList.toggle('show');
+      });
+
+      // Fetch products from backend API
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          const response = await fetch('/api/products');
+          const products = await response.json();
+          
+          const tbody = document.getElementById('productsTableBody');
+          tbody.innerHTML = ''; // Clear loading text
+          
+          if(products.length === 0) {
+             tbody.innerHTML = '<tr><td colspan="6" class="text-center">No products found.</td></tr>';
+             return;
+          }
+
+          products.forEach(product => {
+            const tr = document.createElement('tr');
+            
+            // Status logic based on stock
+            let statusBadge = '';
+            if (product.stock > 20) statusBadge = '<span class="status-badge completed">In Stock</span>';
+            else if (product.stock > 0) statusBadge = '<span class="status-badge warning">Low Stock</span>';
+            else statusBadge = '<span class="status-badge cancelled">Out of Stock</span>';
+
+            tr.innerHTML = `
+              <td>
+                <div class="d-flex align-items-center">
+                  <div class="bg-light rounded p-2 me-3" style="width: 50px; height: 50px;">
+                    <img src="${product.image}" alt="${product.name}" class="img-fluid object-fit-contain h-100">
+                  </div>
+                  <span class="fw-bold">${product.name}</span>
+                </div>
+              </td>
+              <td>${product.category}</td>
+              <td class="fw-bold">$${product.price.toFixed(2)}</td>
+              <td>${product.stock}</td>
+              <td>${statusBadge}</td>
+              <td>
+                <button class="btn btn-sm btn-light text-primary me-1" onclick="editProduct(${product.id})"><i class="fas fa-edit"></i></button>
+                <button class="btn btn-sm btn-light text-danger" onclick="deleteProduct(${product.id})"><i class="fas fa-trash"></i></button>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+        } catch (error) {
+          console.error("Error fetching products:", error);
+          document.getElementById('productsTableBody').innerHTML = '<tr><td colspan="6" class="text-center text-danger">Failed to load products. Is the server running?</td></tr>';
+        }
+      });
+
+      // Example Delete Function
+      async function deleteProduct(id) {
+        if(confirm("Are you sure you want to delete this product?")) {
+          try {
+            await fetch(`/api/products/${id}`, { method: 'DELETE' });
+            location.reload(); // reload the page to see changes
+          } catch(err) {
+            alert("Error deleting product");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
